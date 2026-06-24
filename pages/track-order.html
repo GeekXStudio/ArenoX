@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تتبع طلب بطولتك — ArenoX</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../image/ArenoX-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .track-box { max-width:480px; margin:0 auto; }
+    .status-card { text-align:center; padding:36px 24px; }
+    .status-icon { font-size:3.5rem; margin-bottom:14px; }
+    .status-pill {
+      display:inline-flex; align-items:center; gap:8px; padding:9px 18px;
+      border-radius:999px; font-weight:800; font-size:var(--fs-sm); margin-bottom:18px;
+    }
+    .status-pending  { background:rgba(255,170,0,0.12); border:1.5px solid rgba(255,170,0,0.35); color:#ffaa00; }
+    .status-published{ background:rgba(0,230,118,0.12); border:1.5px solid rgba(0,230,118,0.35); color:var(--green); }
+    .status-rejected { background:rgba(255,23,68,0.12); border:1.5px solid rgba(255,23,68,0.35); color:var(--red); }
+    .track-detail-row {
+      display:flex; justify-content:space-between; gap:12px; padding:11px 0;
+      border-bottom:1px solid var(--border); font-size:var(--fs-sm); text-align:right;
+    }
+    .track-detail-row:last-child { border-bottom:none; }
+    .track-detail-row span:first-child { color:var(--muted); }
+  </style>
+</head>
+<body>
+<div class="img-background"><img src="../image/stadium-glow.jpg" alt="ArenoX"></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'">
+      <span class="logo-text">ArenoX</span>
+    </a>
+    <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links">
+      <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="tournaments.html"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="paid-tournaments.html"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="custom-tournament.html"><i class="fas fa-plus"></i> أنشئ بطولتك</a>
+      <a href="montage.html"><i class="fas fa-film"></i> مونتاج</a>
+      <a href="poster.html"><i class="fas fa-palette"></i> بوسترات</a>
+      <a href="certificates.html"><i class="fas fa-certificate"></i> شهادات</a>
+      <a href="accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow" style="background:radial-gradient(circle,rgba(240,180,41,0.15),transparent 70%)"></div>
+  <div class="hero-badge" style="background:rgba(240,180,41,0.12);border-color:rgba(240,180,41,0.4);color:var(--gold)">
+    <i class="fas fa-receipt"></i> تتبع طلبك
+  </div>
+  <h1>تتبع بطولتك الخاصة<br><span class="line2 grad-gold">برقم الطلب</span></h1>
+  <p>أدخل رقم الطلب (orderId) الذي استلمته بعد الدفع لمعرفة حالة بطولتك وما إذا نُشرت رسمياً.</p>
+</section>
+
+<section class="section">
+  <div class="container track-box">
+
+    <div class="form-card" id="searchCard">
+      <div class="form-sec-title"><i class="fas fa-search"></i> ابحث عن طلبك</div>
+      <div class="form-group">
+        <label>رقم الطلب <span class="req">*</span></label>
+        <input type="text" id="orderIdInput" placeholder="مثال: ARX-MFG2K4-AB12" required>
+        <small>رقم الطلب أُرسل لك بعد إتمام الدفع، ويمكن إيجاده أيضاً في إيميل التأكيد.</small>
+      </div>
+      <button class="btn btn-gold btn-full btn-lg mt-8" id="trackBtn" onclick="trackOrder()">
+        <i class="fas fa-search"></i> تحقق من الحالة
+      </button>
+      <div id="notifBox" style="margin-top:12px"></div>
+    </div>
+
+    <div id="resultArea" style="margin-top:24px"></div>
+
+  </div>
+</section>
+
+<footer>
+  <h4>تابع مجتمع ArenoX الرسمي</h4>
+  <div class="social-row">
+    <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://t.me/arenox7" class="social-btn" target="_blank"><i class="fab fa-telegram"></i></a>
+    <a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p class="powered">Powered by GeekX Engine</p>
+</footer>
+
+<script src="../js/core.js"></script>
+<script>
+function getQueryOrderId() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id') || params.get('orderId') || '';
+}
+
+async function trackOrder() {
+  const orderId = document.getElementById('orderIdInput').value.trim();
+  if (!orderId) { toast('أدخل رقم الطلب أولاً', 'warning'); return; }
+
+  const btn = document.getElementById('trackBtn');
+  setLoading(btn, true);
+  document.getElementById('resultArea').innerHTML = '';
+
+  try {
+    const res  = await fetch(ARENOX.SCRIPT_URL + '?get=order&id=' + encodeURIComponent(orderId));
+    const data = await res.json();
+    setLoading(btn, false);
+    renderResult(data, orderId);
+  } catch (e) {
+    setLoading(btn, false);
+    showNotif('تعذّر الاتصال بالخادم، حاول مرة أخرى.', 'error');
+  }
+}
+
+function renderResult(data, orderId) {
+  const area = document.getElementById('resultArea');
+  if (!data || !data.found) {
+    area.innerHTML = `
+      <div class="card status-card">
+        <div class="status-icon">🔍</div>
+        <h3 style="color:var(--red)">لم يتم العثور على الطلب</h3>
+        <p style="color:var(--muted)">تأكد من رقم الطلب وحاول مجدداً، أو تواصل معنا عبر واتساب.</p>
+        <a href="https://wa.me/${ARENOX.WHATSAPP}?text=استفسار+عن+طلب+${encodeURIComponent(orderId)}" target="_blank" class="btn btn-success mt-16">
+          <i class="fab fa-whatsapp"></i> تواصل واتساب
+        </a>
+      </div>`;
+    return;
+  }
+
+  let pillClass = 'status-pending', icon = '⏳', title = 'طلبك قيد المراجعة';
+  let desc = 'سيتأكد فريق ArenoX من عملية الدفع، ثم يتم نشر بطولتك وشجرتها الرسمية تلقائياً.';
+
+  if (data.isPublished) {
+    pillClass = 'status-published'; icon = '🏆'; title = 'تم نشر بطولتك رسمياً!';
+    desc = 'الشجرة جاهزة الآن — شاركها مع لاعبيك من الرابط أدناه.';
+  } else if ((data.status||'').includes('مرفوض') || (data.status||'').includes('فشل')) {
+    pillClass = 'status-rejected'; icon = '❌'; title = 'هناك مشكلة في طلبك';
+    desc = 'تواصل معنا عبر واتساب لمعرفة التفاصيل وحل المشكلة.';
+  }
+
+  area.innerHTML = `
+    <div class="card status-card">
+      <div class="status-icon">${icon}</div>
+      <span class="status-pill ${pillClass}">${data.status || '—'}</span>
+      <h3>${title}</h3>
+      <p style="color:var(--muted);margin-bottom:18px">${desc}</p>
+
+      <div style="text-align:right;max-width:380px;margin:0 auto">
+        <div class="track-detail-row"><span>اسم البطولة</span><span style="color:var(--gold);font-weight:700">${data.tournamentName||'—'}</span></div>
+        <div class="track-detail-row"><span>اللعبة</span><span>${data.game||'—'}</span></div>
+        <div class="track-detail-row"><span>عدد اللاعبين</span><span>${data.size||'—'}</span></div>
+        <div class="track-detail-row"><span>السعر</span><span style="color:var(--gold);font-weight:700">${data.price||'—'}</span></div>
+        <div class="track-detail-row"><span>المنظم</span><span>${data.organizerName||'—'}</span></div>
+        <div class="track-detail-row"><span>رقم الطلب</span><span style="font-family:'Orbitron',sans-serif;font-size:.85rem">${data.orderId||orderId}</span></div>
+      </div>
+
+      <div class="flex mt-24" style="justify-content:center;flex-wrap:wrap;gap:12px">
+        ${data.isPublished
+          ? `<a href="${data.bracketUrl}" class="btn btn-gold btn-lg"><i class="fas fa-sitemap"></i> مشاهدة شجرة البطولة</a>`
+          : `<a href="https://wa.me/${ARENOX.WHATSAPP}?text=استفسار+عن+طلب+${encodeURIComponent(data.orderId||orderId)}" target="_blank" class="btn btn-success">
+               <i class="fab fa-whatsapp"></i> تواصل واتساب
+             </a>`
+        }
+      </div>
+    </div>`;
+}
+
+// إذا جاء المستخدم برابط فيه ?id=ORDER_ID نملأ الحقل ونبحث تلقائياً
+document.addEventListener('DOMContentLoaded', () => {
+  const pre = getQueryOrderId();
+  if (pre) {
+    document.getElementById('orderIdInput').value = pre;
+    trackOrder();
+  }
+});
+</script>
+</body>
+</html>

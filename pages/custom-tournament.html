@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بطولتك الخاصة — ArenoX</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../image/ArenoX-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+  .price-table { width:100%; min-width:380px; border-collapse:collapse; border-radius:var(--r-md); overflow:hidden; }
+  .price-table th { background:rgba(240,180,41,0.12); padding:14px 18px; color:var(--white); font-weight:800; font-size:var(--fs-sm); border-bottom:2px solid rgba(240,180,41,0.3); text-align:right; }
+  .price-table td { padding:13px 18px; border-bottom:1px solid rgba(255,255,255,0.05); font-size:var(--fs-sm); }
+  .price-table tbody tr:hover { background:rgba(240,180,41,0.05); }
+  .size-btn { padding:10px 20px; border-radius:var(--r-sm); border:1.5px solid var(--border); background:var(--card); color:var(--muted); font-family:'Cairo',sans-serif; font-size:var(--fs-sm); font-weight:700; cursor:pointer; transition:var(--t); flex:1 1 auto; min-width:90px; }
+  .size-btn:hover { border-color:var(--gold); color:var(--gold); }
+  .size-btn.sel { background:rgba(240,180,41,0.15); border-color:var(--gold); color:var(--gold); }
+  .progress-bar { height:8px; background:rgba(255,255,255,0.07); border-radius:4px; overflow:hidden; margin-top:8px; }
+  .progress-fill { height:100%; background:linear-gradient(90deg,#f0b429,#ff8c00); border-radius:4px; transition:width .5s ease; }
+  .step-circle { width:44px; height:44px; border-radius:50%; background:rgba(240,180,41,0.12); border:2px solid rgba(240,180,41,0.35); display:flex; align-items:center; justify-content:center; font-family:'Orbitron',sans-serif; font-weight:900; color:var(--gold); font-size:.9rem; flex-shrink:0; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; padding:16px 0; border-bottom:1px solid var(--border); }
+  .step-item:last-child { border-bottom:none; }
+  .step-body { min-width:0; }
+  .step-body h4 { font-size:var(--fs-base); font-weight:800; margin-bottom:5px; }
+  .step-body p  { font-size:var(--fs-sm); color:var(--muted); line-height:1.65; overflow-wrap:break-word; }
+  @media(max-width:480px){
+    .step-circle{width:38px;height:38px;font-size:.8rem;}
+    .price-table th,.price-table td{padding:10px 12px;font-size:var(--fs-xs);}
+  }
+  </style>
+</head>
+<body>
+<div class="img-background"><img src="../image/stadium-glow.jpg" alt="ArenoX"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'">
+      <span class="logo-text">ArenoX</span>
+    </a>
+    <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links">
+      <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="tournaments.html"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="paid-tournaments.html"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="custom-tournament.html" class="active"><i class="fas fa-plus"></i> أنشئ بطولتك</a>
+      <a href="montage.html"><i class="fas fa-film"></i> مونتاج</a>
+      <a href="poster.html"><i class="fas fa-palette"></i> بوسترات</a>
+      <a href="certificates.html"><i class="fas fa-certificate"></i> شهادات</a>
+      <a href="accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow" style="background:radial-gradient(circle,rgba(240,180,41,0.15),transparent 70%)"></div>
+  <div class="hero-badge" style="background:rgba(240,180,41,0.12);border-color:rgba(240,180,41,0.4);color:var(--gold)">
+    <i class="fas fa-crown"></i> خدمة البطولة المخصصة
+  </div>
+  <h1>بطولتك الخاصة<br><span class="line2 grad-gold">تحت إشرافنا الكامل</span></h1>
+  <p>أنت تختار اللاعبين والاسم والتوقيت — نحن نتولى كل شيء: الشجرة، النشر الرسمي، والإشراف الكامل.</p>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start" class="custom-layout">
+
+      <!-- ══ نموذج الطلب ══ -->
+      <div id="formArea">
+        <div class="form-card">
+          <!-- القسم 1: معلومات البطولة -->
+          <div class="form-sec-title"><i class="fas fa-trophy"></i> معلومات البطولة</div>
+
+          <div class="form-group">
+            <label>اسم البطولة <span class="req">*</span></label>
+            <input type="text" id="tName" placeholder="مثال: ديربي الأصدقاء الرمضاني" required maxlength="60">
+          </div>
+
+          <div class="form-group">
+            <label>اللعبة <span class="req">*</span></label>
+            <select id="tGame" required>
+              <option value="">اختر اللعبة</option>
+              <option>eFootball (PES)</option>
+              <option>EA FC 25</option>
+              <option>Call of Duty</option>
+              <option>Fortnite</option>
+              <option>أخرى</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>تاريخ بداية البطولة <span class="req">*</span></label>
+            <input type="date" id="tDate" required>
+            <small id="durationHint">حدد عدد اللاعبين أولاً لمعرفة مدة البطولة المحجوزة.</small>
+          </div>
+
+          <div id="bookedDatesBox" style="display:none;background:rgba(255,170,0,0.06);border:1px solid rgba(255,170,0,0.25);border-radius:var(--r-md);padding:14px 16px;margin-bottom:20px">
+            <div style="font-size:var(--fs-sm);font-weight:700;color:#ffaa00;margin-bottom:8px"><i class="fas fa-calendar-times"></i> مواعيد محجوزة حالياً (غير متاحة)</div>
+            <div id="bookedDatesList" style="font-size:var(--fs-xs);color:var(--muted);display:flex;flex-direction:column;gap:4px"></div>
+          </div>
+
+          <div class="form-group">
+            <label>وصف البطولة (اختياري)</label>
+            <textarea id="tDesc" placeholder="أي تفاصيل إضافية تريد إضافتها..." style="min-height:75px"></textarea>
+          </div>
+
+          <!-- القسم 2: حجم البطولة -->
+          <div class="form-sec-title mt-16"><i class="fas fa-users"></i> عدد اللاعبين</div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px" id="sizeBtns">
+            <button class="size-btn sel" onclick="setSize(8,  this)"> 8 لاعبين</button>
+            <button class="size-btn"     onclick="setSize(16, this)">16 لاعباً</button>
+            <button class="size-btn"     onclick="setSize(32, this)">32 لاعباً</button>
+            <button class="size-btn"     onclick="setSize(64, this)">64 لاعباً</button>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--r-md);padding:16px;margin-bottom:20px">
+            <div class="flex-between" style="margin-bottom:7px">
+              <span style="font-size:var(--fs-sm);font-weight:700">تقدّم إدخال اللاعبين</span>
+              <span id="playersProgress" style="font-family:'Orbitron',sans-serif;font-size:.85rem;color:var(--gold);font-weight:900">0 / 8</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" id="playersBar" style="width:0%"></div></div>
+          </div>
+
+          <!-- قائمة إدخال اللاعبين -->
+          <div class="form-sec-title"><i class="fas fa-list-ol"></i> أسماء اللاعبين</div>
+          <div id="playersList"></div>
+
+          <!-- معاينة القرعة -->
+          <div class="form-sec-title mt-16"><i class="fas fa-sitemap"></i> معاينة القرعة التلقائية</div>
+          <div class="custom-bracket-preview" id="bracketPreview">
+            <p style="text-align:center;color:var(--muted);padding:16px">أضف لاعبَين على الأقل لرؤية القرعة</p>
+          </div>
+
+          <!-- القسم 3: معلومات المنظم -->
+          <div class="form-sec-title mt-24"><i class="fas fa-user-tie"></i> معلومات المنظّم</div>
+
+          <div class="form-group">
+            <label>اسمك <span class="req">*</span></label>
+            <input type="text" id="orgName" placeholder="اسمك" required>
+          </div>
+
+          <div class="form-group">
+            <label>واتساب / تيليجرام <span class="req">*</span></label>
+            <input type="tel" id="orgContact" placeholder="07XX-XXX-XXXX" required>
+          </div>
+
+          <div class="form-group">
+            <label>البريد الإلكتروني</label>
+            <input type="email" id="orgEmail" placeholder="example@gmail.com">
+          </div>
+
+          <!-- القسم 4: الدفع -->
+          <div class="form-sec-title mt-8"><i class="fas fa-credit-card"></i> الدفع</div>
+
+          <div class="pay-box" id="customPayBox">
+            <div class="pay-tabs">
+              <button class="pay-tab active" data-tab="cpay-iq">🇮🇶 العراق</button>
+              <button class="pay-tab" data-tab="cpay-intl">🌍 دولي</button>
+            </div>
+
+            <div id="cpay-iq" class="pay-content active">
+              <div class="pay-method sel" data-method="asia">
+                <div class="pay-method-ico">📱</div>
+                <div class="pay-method-info"><h4>آسيا سيل</h4><p>تحويل رصيد فوري</p></div>
+                <div class="pay-num" id="asiaNum2">07XX-XXX-XXXX</div>
+              </div>
+              <div class="pay-detail open" data-detail="asia">
+                <p style="font-size:var(--fs-sm);color:var(--muted);margin-bottom:8px">حوّل المبلغ إلى الرقم أعلاه ثم أدخل رقم الإيصال أدناه.</p>
+              </div>
+              <div class="pay-method" data-method="zain">
+                <div class="pay-method-ico">💚</div>
+                <div class="pay-method-info"><h4>زين كاش</h4><p>تحويل فوري</p></div>
+                <div class="pay-num" id="zainNum2">07XX-XXX-XXXX</div>
+              </div>
+              <div class="pay-detail" data-detail="zain">
+                <p style="font-size:var(--fs-sm);color:var(--muted)">حوّل المبلغ إلى رقم زين كاش أعلاه ثم أدخل رقم الإيصال.</p>
+              </div>
+            </div>
+
+            <div id="cpay-intl" class="pay-content">
+              <div class="pay-method" data-method="google">
+                <div class="pay-method-ico">🎁</div>
+                <div class="pay-method-info"><h4>Google Play Gift Card</h4><p>أرسل كود البطاقة</p></div>
+              </div>
+              <div class="pay-detail" data-detail="google">
+                <p style="font-size:var(--fs-sm);color:var(--muted)">اشترِ بطاقة Google Play بقيمة المبلغ المطلوب وأرسل الكود أدناه.</p>
+              </div>
+              <div class="pay-method" data-method="apple">
+                <div class="pay-method-ico">🍎</div>
+                <div class="pay-method-info"><h4>Apple Gift Card</h4><p>أرسل كود البطاقة</p></div>
+              </div>
+              <div class="pay-detail" data-detail="apple">
+                <p style="font-size:var(--fs-sm);color:var(--muted)">اشترِ Apple Gift Card بقيمة المبلغ المطلوب وأرسل الكود أدناه.</p>
+              </div>
+            </div>
+
+            <div class="form-group mt-16">
+              <label>رقم الإيصال / كود البطاقة <span class="req">*</span></label>
+              <input type="text" id="customPayCode" placeholder="أدخل الكود أو رقم الإيصال بعد الدفع" required>
+            </div>
+
+            <!-- ملخص السعر -->
+            <div class="order-sum" id="priceSummary">
+              <h4><i class="fas fa-receipt"></i> ملخص التكلفة</h4>
+              <div class="o-row"><span>تنظيم البطولة (8 لاعبين)</span><span style="color:var(--gold)">5,000 IQD</span></div>
+              <div class="o-row o-total"><strong>الإجمالي</strong><strong style="color:var(--gold)" id="totalPrice">5,000 IQD</strong></div>
+            </div>
+          </div>
+
+          <div class="alert alert-info mt-16">
+            <i class="fas fa-info-circle" style="flex-shrink:0;font-size:1.1rem"></i>
+            <div>بعد الدفع، يتأكد فريق ArenoX من الإيصال خلال <strong>24 ساعة</strong>، ثم تُنشر شجرتك الرسمية تلقائياً ويصلك رابطها فوراً.</div>
+          </div>
+
+          <button class="btn btn-gold btn-full btn-lg mt-8" id="submitCustomBtn" onclick="submitCustom()">
+            <i class="fas fa-crown"></i> إرسال طلب البطولة
+          </button>
+        </div>
+
+        <div id="notifBox" style="margin-top:12px"></div>
+      </div>
+
+      <!-- ══ الشريط الجانبي ══ -->
+      <div>
+        <!-- جدول الأسعار -->
+        <div class="card mb-24">
+          <h3 style="font-size:var(--fs-md);font-weight:900;margin-bottom:18px;color:var(--gold)">
+            <i class="fas fa-tags"></i> جدول الأسعار
+          </h3>
+          <div style="overflow-x:auto">
+            <table class="price-table">
+              <thead>
+                <tr>
+                  <th>العدد</th>
+                  <th>السعر</th>
+                  <th>الأدوار</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>8 لاعبين</td><td style="color:var(--gold);font-weight:800">5,000 IQD</td><td>3 أدوار</td></tr>
+                <tr><td>16 لاعباً</td><td style="color:var(--gold);font-weight:800">8,000 IQD</td><td>4 أدوار</td></tr>
+                <tr><td>32 لاعباً</td><td style="color:var(--gold);font-weight:800">12,000 IQD</td><td>5 أدوار</td></tr>
+                <tr><td>64 لاعباً</td><td style="color:var(--gold);font-weight:800">18,000 IQD</td><td>6 أدوار</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- تتبع طلب سابق -->
+        <div class="card mb-24" style="text-align:center">
+          <h3 style="font-size:var(--fs-base);font-weight:800;margin-bottom:10px">
+            <i class="fas fa-receipt" style="color:var(--cyan)"></i> لديك طلب سابق؟
+          </h3>
+          <p style="font-size:var(--fs-sm);color:var(--muted);margin-bottom:14px">تابع حالة بطولتك ورابط شجرتها برقم الطلب.</p>
+          <a href="track-order.html" class="btn btn-outline btn-full"><i class="fas fa-search"></i> تتبع طلبي</a>
+        </div>
+
+        <!-- ماذا نقدم -->
+        <div class="card mb-24">
+          <h3 style="font-size:var(--fs-md);font-weight:900;margin-bottom:18px">
+            <i class="fas fa-star" style="color:var(--gold)"></i> ماذا يتضمن التنظيم؟
+          </h3>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div class="flex" style="gap:11px"><span style="color:var(--green);font-size:1.1rem">✅</span><span style="font-size:var(--fs-sm)">بوستر رسمي للبطولة بتصميم احترافي</span></div>
+            <div class="flex" style="gap:11px"><span style="color:var(--green);font-size:1.1rem">✅</span><span style="font-size:var(--fs-sm)">شجرة مباريات ديناميكية تُحدَّث حية</span></div>
+            <div class="flex" style="gap:11px"><span style="color:var(--green);font-size:1.1rem">✅</span><span style="font-size:var(--fs-sm)">حكم رقابي من فريق ArenoX</span></div>
+            <div class="flex" style="gap:11px"><span style="color:var(--green);font-size:1.1rem">✅</span><span style="font-size:var(--fs-sm)">نشر على جميع منصاتنا الرسمية</span></div>
+            <div class="flex" style="gap:11px"><span style="color:var(--green);font-size:1.1rem">✅</span><span style="font-size:var(--fs-sm)">توثيق النتائج وأرشفة المواجهات</span></div>
+            <div class="flex" style="gap:11px"><span style="color:var(--green);font-size:1.1rem">✅</span><span style="font-size:var(--fs-sm)">شهادة للفائز برمز QR موثّق</span></div>
+            <div class="flex" style="gap:11px"><span style="color:var(--green);font-size:1.1rem">✅</span><span style="font-size:var(--fs-sm)">إعلان الفائز رسمياً على المنصة</span></div>
+          </div>
+        </div>
+
+        <!-- الخطوات -->
+        <div class="card">
+          <h3 style="font-size:var(--fs-md);font-weight:900;margin-bottom:18px">
+            <i class="fas fa-list-check" style="color:var(--cyan)"></i> كيف تعمل؟
+          </h3>
+          <div class="step-item">
+            <div class="step-circle">1</div>
+            <div class="step-body"><h4>أرسل الطلب</h4><p>أدخل أسماء اللاعبين وتفاصيل البطولة وأكمل الدفع.</p></div>
+          </div>
+          <div class="step-item">
+            <div class="step-circle">2</div>
+            <div class="step-body"><h4>التأكيد</h4><p>يتواصل معك فريقنا خلال 24 ساعة لتأكيد التفاصيل.</p></div>
+          </div>
+          <div class="step-item">
+            <div class="step-circle">3</div>
+            <div class="step-body"><h4>الإطلاق التلقائي</h4><p>فور تأكيد دفعك، تُنشأ الشجرة الرسمية وتُنشر تلقائياً برابط خاص بك.</p></div>
+          </div>
+          <div class="step-item">
+            <div class="step-circle">4</div>
+            <div class="step-body"><h4>الإشراف</h4><p>نتابع كل مباراة ونُحدّث النتائج حتى التتويج.</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+@media(max-width:900px) { .custom-layout { grid-template-columns:1fr !important; } }
+</style>
+
+<footer>
+  <h4>تابع مجتمع ArenoX الرسمي</h4>
+  <div class="social-row">
+    <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://t.me/arenox7" class="social-btn" target="_blank"><i class="fab fa-telegram"></i></a>
+    <a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p class="powered">Powered by GeekX Engine</p>
+</footer>
+
+<script src="../js/core.js"></script>
+<script>
+// ── جدول الأسعار ─────────────────────────────────
+const PRICES = { 8:5000, 16:8000, 32:12000, 64:18000 };
+const ROUNDS = { 8:3, 16:4, 32:5, 64:6 };
+const DURATION_DAYS = { 8:3, 16:4, 32:5, 64:6 }; // مدة حجز البطولة بالأيام حسب عدد اللاعبين
+
+let bookedRanges = []; // [{name, start, end}] تُحمّل من السيرفر
+
+function setSize(n, btn) {
+  CustomTournament.size = n;
+  CustomTournament.players = CustomTournament.players.slice(0, n);
+  $$('.size-btn').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+  CustomTournament.renderPlayersList('playersList');
+  CustomTournament.renderPreview('bracketPreview');
+  // تحديث السعر
+  const price = PRICES[n];
+  document.getElementById('totalPrice').textContent = fmtNum(price) + ' IQD';
+  const sumEl = document.getElementById('priceSummary');
+  if (sumEl) sumEl.querySelector('.o-row:first-child').innerHTML = `<span>تنظيم البطولة (${n} لاعباً)</span><span style="color:var(--gold)">${fmtNum(price)} IQD</span>`;
+  updateDurationHint();
+}
+
+function updateDurationHint() {
+  const n = CustomTournament.size;
+  const days = DURATION_DAYS[n] || 3;
+  const hint = document.getElementById('durationHint');
+  const dateInput = document.getElementById('tDate');
+  if (hint) {
+    let extra = '';
+    if (dateInput && dateInput.value) {
+      const end = addDays(dateInput.value, days - 1);
+      extra = ` — من ${dateInput.value} إلى ${end}`;
+    }
+    hint.innerHTML = `مدة بطولة ${n} لاعباً هي <strong style="color:var(--gold)">${days} أيام</strong>${extra}. لا يمكن لبطولة أخرى حجز نفس الفترة.`;
+  }
+}
+
+function addDays(dateStr, days) {
+  const d = new Date(dateStr + 'T00:00:00');
+  d.setDate(d.getDate() + days);
+  return d.toISOString().slice(0,10);
+}
+
+function rangesOverlap(s1, e1, s2, e2) {
+  return !(e1 < s2 || s1 > e2);
+}
+
+async function loadBookedDates() {
+  try {
+    const res  = await fetch(ARENOX.SCRIPT_URL + '?get=bookeddates');
+    const data = await res.json();
+    bookedRanges = data?.booked || [];
+    renderBookedDatesBox();
+  } catch (e) { /* صامت — التحقق النهائي يحصل بالسيرفر دائماً */ }
+}
+
+function renderBookedDatesBox() {
+  const box  = document.getElementById('bookedDatesBox');
+  const list = document.getElementById('bookedDatesList');
+  if (!box || !list) return;
+  if (!bookedRanges.length) { box.style.display = 'none'; return; }
+
+  // نعرض فقط المواعيد القادمة أو الجارية (نتجاهل اللي خلصت بالماضي)
+  const today = new Date().toISOString().slice(0,10);
+  const upcoming = bookedRanges.filter(r => r.end >= today);
+  if (!upcoming.length) { box.style.display = 'none'; return; }
+
+  box.style.display = 'block';
+  list.innerHTML = upcoming
+    .sort((a,b) => a.start.localeCompare(b.start))
+    .map(r => `<div><i class="fas fa-circle" style="font-size:.5rem;color:#ffaa00;margin-left:6px"></i> ${r.start} → ${r.end} <span style="color:var(--muted)">(${r.name||'بطولة محجوزة'})</span></div>`)
+    .join('');
+}
+
+function checkDateConflictClientSide(startStr, days) {
+  const endStr = addDays(startStr, days - 1);
+  const today  = new Date().toISOString().slice(0,10);
+  if (startStr < today) return { conflict:true, message:'لا يمكن اختيار تاريخ في الماضي.' };
+  for (const r of bookedRanges) {
+    if (rangesOverlap(startStr, endStr, r.start, r.end)) {
+      return { conflict:true, message:`هذا الموعد يتعارض مع بطولة "${r.name||'محجوزة'}" (${r.start} → ${r.end}).` };
+    }
+  }
+  return { conflict:false, endStr };
+}
+
+// ── إرسال الطلب ──────────────────────────────────
+async function submitCustom() {
+  const tName    = document.getElementById('tName').value.trim();
+  const tGame    = document.getElementById('tGame').value;
+  const tDate    = document.getElementById('tDate').value;
+  const orgName  = document.getElementById('orgName').value.trim();
+  const orgCnt   = document.getElementById('orgContact').value.trim();
+  const payCode  = document.getElementById('customPayCode').value.trim();
+
+  if (!tName)   { toast('أدخل اسم البطولة','warning'); return; }
+  if (!tGame)   { toast('اختر اللعبة','warning'); return; }
+  if (!tDate)   { toast('اختر تاريخ بداية البطولة','warning'); return; }
+  if (!orgName) { toast('أدخل اسمك','warning'); return; }
+  if (!orgCnt)  { toast('أدخل رقم التواصل','warning'); return; }
+  if (!payCode) { toast('أدخل رقم الإيصال أو كود البطاقة','warning'); return; }
+
+  const named = CustomTournament.players.filter(p => p?.name);
+  if (named.length < 2) { toast('أضف لاعبَين على الأقل','warning'); return; }
+
+  // تحقق فوري من تعارض الموعد قبل الإرسال (التحقق الحاسم يبقى دائماً بالسيرفر)
+  const size       = CustomTournament.size;
+  const days       = DURATION_DAYS[size] || 3;
+  const clientCheck = checkDateConflictClientSide(tDate, days);
+  if (clientCheck.conflict) { toast(clientCheck.message, 'error'); return; }
+
+  const btn = document.getElementById('submitCustomBtn');
+  setLoading(btn, true);
+
+  // توليد الشجرة
+  const bracket = CustomTournament.generateBracket();
+  const price   = PRICES[size];
+  const orderId = genId();
+
+  const payload = {
+    action:       'custom_tournament',
+    service:      'custom_tournament',
+    orderId,
+    tournamentName:  tName,
+    game:            tGame,
+    tournamentDate:  tDate,
+    description:     document.getElementById('tDesc').value,
+    organizerName:   orgName,
+    organizerContact:orgCnt,
+    organizerEmail:  document.getElementById('orgEmail').value,
+    size,
+    price: price + ' IQD',
+    players:     named.map(p=>p.name).join(' | '),
+    playersList: JSON.stringify(named.map(p=>p.name)),
+    bracketJSON: JSON.stringify(bracket),
+    payCode,
+    timestamp: fmtDate(),
+  };
+
+  const result = await sendToServices(payload);
+  setLoading(btn, false);
+
+  if (result.success) {
+    const endDateStr = result.endDate || addDays(tDate, days - 1);
+    document.getElementById('formArea').innerHTML = `
+      <div class="success-state">
+        <div class="success-icon">👑</div>
+        <h3 style="color:var(--gold)">تم استلام طلب بطولتك!</h3>
+        <p>سيتأكد فريق ArenoX من الدفع، وستُنشر بطولتك وشجرتها الرسمية تلقائياً فور التأكيد.</p>
+        <div class="order-id-tag">${orderId}</div>
+        <div class="card mt-24" style="text-align:right;max-width:420px;margin:24px auto 0">
+          <h4 style="color:var(--gold);margin-bottom:14px"><i class="fas fa-info-circle"></i> ملخص طلبك</h4>
+          <div class="o-row"><span>اسم البطولة</span><span style="color:var(--gold);font-weight:700">${tName}</span></div>
+          <div class="o-row"><span>اللعبة</span><span>${tGame}</span></div>
+          <div class="o-row"><span>عدد اللاعبين</span><span>${named.length} / ${size}</span></div>
+          <div class="o-row"><span>فترة البطولة المحجوزة</span><span style="color:var(--cyan);font-weight:700">${tDate} → ${endDateStr}</span></div>
+          <div class="o-row"><span>المبلغ المدفوع</span><span style="color:var(--gold);font-weight:800">${fmtNum(price)} IQD</span></div>
+        </div>
+        <div class="alert alert-info mt-16" style="max-width:420px;margin:16px auto 0;text-align:right">
+          <i class="fas fa-bookmark" style="flex-shrink:0;font-size:1.1rem"></i>
+          <div>احفظ رقم طلبك أعلاه — استخدمه في صفحة <strong>"تتبع طلبي"</strong> لمعرفة حالة بطولتك ورابط شجرتها فور نشرها.</div>
+        </div>
+        <div class="flex mt-24" style="justify-content:center;flex-wrap:wrap;gap:12px">
+          <a href="track-order.html?id=${orderId}" class="btn btn-gold">
+            <i class="fas fa-receipt"></i> تتبع طلبي
+          </a>
+          <a href="https://wa.me/${ARENOX.WHATSAPP}?text=طلب+بطولة+${encodeURIComponent(tName)}+رقم+${orderId}" target="_blank" class="btn btn-success">
+            <i class="fab fa-whatsapp"></i> تواصل واتساب
+          </a>
+          <a href="../index.html" class="btn btn-ghost">
+            <i class="fas fa-home"></i> الرئيسية
+          </a>
+        </div>
+      </div>`;
+  } else {
+    if (result.conflict) {
+      showNotif(result.message || 'هذا الموعد محجوز من بطولة أخرى، يرجى اختيار تاريخ آخر.', 'error');
+      if (result.suggestedDate) {
+        const hint = document.getElementById('durationHint');
+        if (hint) hint.innerHTML += `<br><span style="color:var(--cyan)">أقرب موعد متاح: ${result.suggestedDate}</span>`;
+      }
+      loadBookedDates(); // تحديث القائمة فوراً
+    } else {
+      showNotif(result.message || 'حدث خطأ في الإرسال. تواصل معنا عبر واتساب مباشرةً.', 'error');
+    }
+  }
+}
+
+// ── تهيئة ────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  CustomTournament.size = 8;
+  CustomTournament.renderPlayersList('playersList');
+  CustomTournament.renderPreview('bracketPreview');
+
+  // نظام الدفع
+  $$('.pay-tab', document.getElementById('customPayBox')).forEach(tab => {
+    tab.addEventListener('click', () => {
+      $$('.pay-tab, .pay-content', document.getElementById('customPayBox')).forEach(e => e.classList.remove('active','open'));
+      tab.classList.add('active');
+      const cnt = document.getElementById(tab.dataset.tab);
+      if (cnt) cnt.classList.add('active');
+    });
+  });
+  $$('.pay-method', document.getElementById('customPayBox')).forEach(card => {
+    card.addEventListener('click', () => {
+      const parent = card.closest('.pay-content');
+      $$('.pay-method', parent).forEach(c => c.classList.remove('sel'));
+      card.classList.add('sel');
+      $$('.pay-detail', parent).forEach(d => d.classList.remove('open'));
+      const det = parent.querySelector(`[data-detail="${card.dataset.method}"]`);
+      if (det) det.classList.add('open');
+    });
+  });
+
+  // ربط أرقام الدفع من الـ config
+  const asiaEl = document.getElementById('asiaNum2');
+  const zainEl = document.getElementById('zainNum2');
+  if (asiaEl) asiaEl.textContent = ARENOX.ASIA_NUM;
+  if (zainEl) zainEl.textContent = ARENOX.ZAIN_NUM;
+
+  // نظام حجز التواريخ
+  const tDateEl = document.getElementById('tDate');
+  if (tDateEl) {
+    const todayStr = new Date().toISOString().slice(0,10);
+    tDateEl.setAttribute('min', todayStr);
+    tDateEl.addEventListener('change', updateDurationHint);
+  }
+  updateDurationHint();
+  loadBookedDates();
+});
+</script>
+</body>
+</html>

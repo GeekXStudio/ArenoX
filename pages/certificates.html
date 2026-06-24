@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شهادة الإنجاز — ArenoX</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../image/ArenoX-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="img-background"><img src="../image/stadium-glow.jpg" alt="ArenoX"></div><nav class="navbar"><div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="../image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'"><span class="logo-text">ArenoX</span></a>
+    <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links">
+      <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="tournaments.html"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="paid-tournaments.html"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="custom-tournament.html"><i class="fas fa-crown"></i> بطولتك</a>
+      <a href="montage.html"><i class="fas fa-film"></i> مونتاج</a>
+      <a href="poster.html"><i class="fas fa-palette"></i> بوسترات</a>
+      <a href="certificates.html"><i class="fas fa-certificate"></i> شهادات</a>
+      <a href="accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+</div></nav>
+<section class="hero"><div class="hero-glow"></div>
+  <div class="hero-badge"><i class="fas fa-certificate"></i> شهادة الإنجاز الرقمية</div>
+  <h1>وثّق فوزك<br><span class="line2 grad-purple">للأبد</span></h1>
+  <p>شهادة رسمية مولّدة برمجياً بـ QR Code يُثبت صحتها — شاركها مع العالم باحترافية.</p>
+</section>
+<section class="section"><div class="container cert-layout" style="display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start">
+  <div>
+    <h3 style="font-size:var(--fs-lg);font-weight:900;margin-bottom:18px"><i class="fas fa-eye" style="color:var(--violet)"></i> معاينة الشهادة</h3>
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:18px">
+      <canvas id="certCanvas" width="1200" height="850" style="width:100%;display:block"></canvas>
+    </div>
+    <div style="background:rgba(0,230,118,0.07);border:1px solid rgba(0,230,118,0.25);border-radius:var(--r-md);padding:18px;display:flex;align-items:center;gap:16px;margin-bottom:16px">
+      <div id="qrBox" style="background:#fff;border-radius:8px;padding:8px;width:80px;height:80px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.65rem;color:#333;text-align:center">QR Code</div>
+      <div><h4 style="color:var(--green);margin-bottom:5px">✅ شهادة موثقة</h4><p style="font-size:var(--fs-sm);color:var(--muted);line-height:1.55">امسح الـ QR للتحقق من صحة الشهادة على صفحة البطولة المؤرشفة.</p><div id="certIdTxt" style="font-family:Orbitron,sans-serif;color:var(--violet);font-size:.78rem;margin-top:6px"></div></div>
+    </div>
+    <div class="flex" style="gap:12px;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="dlCert()"><i class="fas fa-download"></i> تنزيل PNG</button>
+      <button class="btn btn-outline" onclick="shareCert()"><i class="fas fa-share-alt"></i> مشاركة</button>
+    </div>
+    <div class="alert alert-warning mt-16"><i class="fas fa-info-circle" style="flex-shrink:0"></i><div>الشهادة المعاينة هنا للمعاينة فقط. الشهادة الرسمية الموثّقة تُصدر بعد تأكيد الفريق.</div></div>
+  </div>
+  <div>
+    <div class="form-card" style="padding:28px">
+      <div class="form-sec-title"><i class="fas fa-palette"></i> بيانات الشهادة</div>
+      <div class="form-group"><label>اسم الفائز <span class="req">*</span></label><input type="text" id="cWinner" value="ZiZo_GG" oninput="renderCert()"></div>
+      <div class="form-group"><label>اسم البطولة <span class="req">*</span></label><input type="text" id="cTourney" value="بطولة Arena الرمضانية" oninput="renderCert()"></div>
+      <div class="form-group"><label>الإنجاز</label><select id="cRank" onchange="renderCert()"><option>بطل البطولة 🥇</option><option>وصيف البطولة 🥈</option><option>أفضل هداف ⚽</option><option>أفضل لاعب 🌟</option></select></div>
+      <div class="form-group"><label>اللعبة</label><select id="cGame" onchange="renderCert()"><option>eFootball (PES)</option><option>EA FC 25</option><option>أخرى</option></select></div>
+      <div class="form-group"><label>التاريخ</label><input type="date" id="cDate" oninput="renderCert()"></div>
+      <div class="form-sec-title mt-8"><i class="fas fa-paper-plane"></i> طلب الشهادة الرسمية</div>
+      <div id="certOrderArea">
+        <div class="form-group"><label>واتساب <span class="req">*</span></label><input type="tel" id="cWA" placeholder="07XX-XXX-XXXX" required></div>
+        <div class="form-group"><label>رابط إثبات الفوز <span class="req">*</span></label><input type="url" id="cProof" placeholder="لقطة شاشة أو رابط النتيجة" required></div>
+        <div class="pay-box" id="certPay" style="margin-top:8px">
+          <div class="pay-tabs"><button class="pay-tab active" data-tab="cpiq">🇮🇶 العراق</button><button class="pay-tab" data-tab="cpintl">🌍 دولي</button></div>
+          <div id="cpiq" class="pay-content active">
+            <div class="pay-method" data-method="asia"><div class="pay-method-ico">📱</div><div class="pay-method-info"><h4>آسيا سيل</h4></div></div>
+            <div class="pay-method" data-method="zain"><div class="pay-method-ico">💚</div><div class="pay-method-info"><h4>زين كاش</h4></div></div>
+          </div>
+          <div id="cpintl" class="pay-content">
+            <div class="pay-method" data-method="google"><div class="pay-method-ico">🎁</div><div class="pay-method-info"><h4>Google Play Gift Card</h4></div></div>
+            <div class="pay-method" data-method="apple"><div class="pay-method-ico">🍎</div><div class="pay-method-info"><h4>Apple Gift Card</h4></div></div>
+          </div>
+          <div class="form-group mt-12"><label>كود / إيصال <span class="req">*</span></label><input type="text" id="cPayCode" placeholder="أدخل هنا" required></div>
+          <div class="order-sum"><div class="o-row"><span>شهادة إنجاز رقمية موثقة</span><span style="color:var(--gold)">1,500 IQD</span></div><div class="o-row o-total"><strong>الإجمالي</strong><strong style="color:var(--gold)">1,500 IQD</strong></div></div>
+        </div>
+        <button class="btn btn-gold btn-full btn-lg mt-16" onclick="submitCert()"><i class="fas fa-award"></i> اطلب شهادتك الرسمية</button>
+      </div>
+    </div>
+  </div>
+</div></section>
+<style>@media(max-width:900px){.cert-layout{grid-template-columns:1fr !important;}}</style>
+<footer><h4>تابع مجتمع ArenoX الرسمي</h4>
+<div class="social-row">
+  <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
+  <a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://t.me/arenox7" class="social-btn" target="_blank"><i class="fab fa-telegram"></i></a>
+  <a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank"><i class="fab fa-youtube"></i></a>
+</div><p class="powered">Powered by GeekX Engine</p></footer>
+<script src="../js/core.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+let certId='CERT-'+Date.now().toString(36).toUpperCase();
+document.getElementById('certIdTxt').textContent='معرّف: '+certId;
+document.getElementById('cDate').value=new Date().toISOString().split('T')[0];
+
+function renderCert(){
+  const cv=document.getElementById('certCanvas'),ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height;
+  const winner=document.getElementById('cWinner').value||'اللاعب';
+  const tourney=document.getElementById('cTourney').value||'بطولة ArenoX';
+  const rank=document.getElementById('cRank').value;
+  const game=document.getElementById('cGame').value;
+  const dateV=document.getElementById('cDate').value;
+  const dateStr=dateV?new Date(dateV).toLocaleDateString('ar-IQ',{year:'numeric',month:'long',day:'numeric'}):new Date().toLocaleDateString('ar-IQ',{year:'numeric',month:'long',day:'numeric'});
+  // BG
+  const bg=ctx.createLinearGradient(0,0,W,H);bg.addColorStop(0,'#0D0900');bg.addColorStop(1,'#1F1400');
+  ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+  // glow
+  const g=ctx.createRadialGradient(W/2,0,0,W/2,0,500);g.addColorStop(0,'rgba(240,180,41,0.15)');g.addColorStop(1,'transparent');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  // border
+  ctx.strokeStyle='#C9A227';ctx.lineWidth=3;ctx.strokeRect(22,22,W-44,H-44);
+  ctx.strokeStyle='rgba(201,162,39,0.4)';ctx.lineWidth=1;ctx.strokeRect(32,32,W-64,H-64);
+  // watermark
+  ctx.fillStyle='rgba(240,180,41,0.05)';ctx.font='bold 180px Orbitron,sans-serif';ctx.textAlign='center';ctx.fillText('ARENA',W/2,H/2+80);
+  // header
+  ctx.fillStyle='#F0B429';ctx.font='bold 42px Orbitron,sans-serif';ctx.textAlign='center';ctx.fillText('ARENOX',W/2,95);
+  ctx.fillStyle='rgba(255,255,255,0.55)';ctx.font='28px Cairo,sans-serif';ctx.fillText('شهادة إنجاز رسمية موثقة',W/2,140);
+  ctx.strokeStyle='rgba(201,162,39,0.4)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(120,160);ctx.lineTo(W-120,160);ctx.stroke();
+  // trophy
+  ctx.font='88px Arial';ctx.fillText('🏆',W/2,270);
+  // "awarded to"
+  ctx.fillStyle='#C9A227';ctx.font='30px Cairo,sans-serif';ctx.fillText('تُمنح هذه الشهادة إلى',W/2,330);
+  // name
+  ctx.fillStyle='#F0B429';ctx.font='bold 76px Cairo,sans-serif';ctx.fillText(winner,W/2,425);
+  const nw=ctx.measureText(winner).width;
+  ctx.strokeStyle='rgba(240,180,41,0.4)';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(W/2-nw/2-20,440);ctx.lineTo(W/2+nw/2+20,440);ctx.stroke();
+  // achievement
+  ctx.fillStyle='rgba(255,255,255,0.85)';ctx.font='32px Cairo,sans-serif';ctx.fillText('تقديراً لتحقيقه',W/2,500);
+  ctx.fillStyle='#F0B429';ctx.font='bold 40px Cairo,sans-serif';ctx.fillText(rank,W/2,550);
+  ctx.fillStyle='rgba(255,255,255,0.75)';ctx.font='30px Cairo,sans-serif';ctx.fillText('في '+tourney+' — '+game,W/2,600);
+  // bottom
+  ctx.strokeStyle='rgba(201,162,39,0.35)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(120,640);ctx.lineTo(W-120,640);ctx.stroke();
+  ctx.fillStyle='#C9A227';ctx.font='26px Cairo,sans-serif';ctx.textAlign='right';ctx.fillText('📅 '+dateStr,W-120,692);
+  ctx.textAlign='left';ctx.font='20px Orbitron,sans-serif';ctx.fillText(certId,120,692);
+  ctx.textAlign='center';ctx.fillStyle='rgba(255,255,255,0.4)';ctx.font='24px Cairo,sans-serif';ctx.fillText('المدير العام — ArenoX',W/2,755);
+}
+
+function dlCert(){renderCert();const a=document.createElement('a');a.href=document.getElementById('certCanvas').toDataURL('image/png');a.download='arenox_cert_'+certId+'.png';a.click();toast('تم التنزيل! 🏆','success');}
+function shareCert(){
+  const url='https://arenox.com/verify/'+certId;
+  if(navigator.share)navigator.share({title:'شهادة إنجاز ArenoX',url});
+  else{navigator.clipboard.writeText(url);toast('تم نسخ رابط التحقق ✅','success');}
+}
+async function submitCert(){
+  const wa=document.getElementById('cWA').value.trim(),proof=document.getElementById('cProof').value.trim(),code=document.getElementById('cPayCode').value.trim();
+  if(!wa||!proof||!code){toast('يرجى تعبئة جميع الحقول','warning');return;}
+  const data={service:'certificate',winnerName:document.getElementById('cWinner').value,certTourney:document.getElementById('cTourney').value,certRank:document.getElementById('cRank').value,certGame:document.getElementById('cGame').value,certDate:document.getElementById('cDate').value,proofLink:proof,whatsapp:wa,payCode:code,previewCertId:certId};
+  const r=await sendToServices(data);
+  if(r.success)showSuccess(document.getElementById('certOrderArea'),r.orderId,'<p style="color:var(--muted);margin-top:10px;font-size:var(--fs-sm)">سيتم التحقق وإصدار الشهادة الرسمية خلال 24 ساعة.</p>');
+  else toast('خطأ، تواصل واتساب','error');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  renderCert();
+  const box=document.getElementById('certPay');
+  $$('.pay-tab',box).forEach(t=>t.addEventListener('click',()=>{$$('.pay-tab,.pay-content',box).forEach(e=>e.classList.remove('active'));t.classList.add('active');const c=box.querySelector('#'+t.dataset.tab);if(c)c.classList.add('active');}));
+  $$('.pay-method',box).forEach(c=>c.addEventListener('click',()=>{$$('.pay-method',c.closest('.pay-content')).forEach(x=>x.classList.remove('sel'));c.classList.add('sel');}));
+});
+</script></body></html>

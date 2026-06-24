@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سوق الحسابات — ArenoX</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../image/ArenoX-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="img-background"><img src="../image/stadium-glow.jpg" alt="ArenoX"></div>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="../image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'"><span class="logo-text">ArenoX</span></a>
+    <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links">
+      <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="tournaments.html"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="paid-tournaments.html"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="custom-tournament.html"><i class="fas fa-crown"></i> بطولتك</a>
+      <a href="montage.html"><i class="fas fa-film"></i> مونتاج</a>
+      <a href="poster.html"><i class="fas fa-palette"></i> بوسترات</a>
+      <a href="certificates.html"><i class="fas fa-certificate"></i> شهادات</a>
+      <a href="accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+  </div>
+</nav>
+<section class="hero"><div class="hero-glow"></div>
+  <div class="hero-badge"><i class="fas fa-shield-alt"></i> سوق الحسابات الآمن</div>
+  <h1>بيع، اشترِ، بادِل<br><span class="line2 grad-purple">بأمان تام</span></h1>
+  <p>نضمن حقوق البائع والمشتري في كل صفقة — وساطة موثوقة تحت إشراف فريق ArenoX.</p>
+</section>
+<section class="section"><div class="container">
+  <div style="display:grid;grid-template-columns:1fr 320px;gap:28px" class="acc-layout">
+    <div>
+      <div class="flex-between mb-24">
+        <h2 style="font-size:var(--fs-xl);font-weight:900">🛒 الحسابات المعروضة</h2>
+        <button class="btn btn-primary btn-sm" onclick="document.getElementById('sellModal').classList.add('open')"><i class="fas fa-plus"></i> أعرض حسابك</button>
+      </div>
+      <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:22px" id="filterBtns">
+        <button class="btn btn-primary btn-sm" onclick="filterAcc('all',this)">الكل</button>
+        <button class="btn btn-ghost btn-sm" onclick="filterAcc('sell',this)">للبيع</button>
+        <button class="btn btn-ghost btn-sm" onclick="filterAcc('trade',this)">للمبادلة</button>
+        <button class="btn btn-ghost btn-sm" onclick="filterAcc('efootball',this)">eFootball</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px" id="accList"></div>
+    </div>
+    <div>
+      <div class="card mb-20" style="border-color:rgba(0,230,118,0.3)">
+        <h3 style="font-size:var(--fs-md);font-weight:900;margin-bottom:18px"><i class="fas fa-shield-alt" style="color:var(--green)"></i> كيف تعمل الوساطة؟</h3>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="flex" style="gap:12px"><div class="how-step-num">1</div><div><strong style="font-size:var(--fs-sm)">الاتفاق</strong><p style="font-size:var(--fs-xs);color:var(--muted)">اتفق البائع والمشتري على السعر</p></div></div>
+          <div class="flex" style="gap:12px"><div class="how-step-num">2</div><div><strong style="font-size:var(--fs-sm)">الإيداع</strong><p style="font-size:var(--fs-xs);color:var(--muted)">المشتري يودع المبلغ عند ArenoX</p></div></div>
+          <div class="flex" style="gap:12px"><div class="how-step-num">3</div><div><strong style="font-size:var(--fs-sm)">التحقق والتسليم</strong><p style="font-size:var(--fs-xs);color:var(--muted)">نتحقق من الحساب ثم نكمل الصفقة</p></div></div>
+        </div>
+        <div class="badge badge-green" style="margin-top:16px;width:100%;justify-content:center">عمولة 5% فقط من قيمة الصفقة</div>
+      </div>
+      <div class="card" style="border-color:rgba(255,23,68,0.25)">
+        <div style="font-size:1.5rem;margin-bottom:10px">⚠️</div>
+        <h4 style="font-weight:800;margin-bottom:8px">تحذير مهم</h4>
+        <p style="font-size:var(--fs-sm);color:var(--muted);line-height:1.65">لا تُجرِ أي صفقة خارج إشراف المنصة. ArenoX غير مسؤولة عن الصفقات المباشرة.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+<!-- SELL MODAL -->
+<div class="modal-overlay" id="sellModal">
+  <div class="modal-box">
+    <div class="modal-head"><div class="modal-title">📢 عرض حساب</div><button class="modal-close" onclick="document.getElementById('sellModal').classList.remove('open')">✕</button></div>
+    <div id="sellFormArea">
+      <div class="form-group"><label>اللعبة <span class="req">*</span></label><select id="sGame" required><option value="">اختر...</option><option>eFootball (PES)</option><option>EA FC 25</option><option>أخرى</option></select></div>
+      <div class="form-row">
+        <div class="form-group"><label>نوع الإعلان <span class="req">*</span></label><select id="sType" required><option value="">اختر...</option><option>للبيع</option><option>للمبادلة</option></select></div>
+        <div class="form-group"><label>الرتبة</label><select id="sRank"><option value="">اختر...</option><option>ماسي</option><option>ذهبي</option><option>فضي</option><option>برونزي</option></select></div>
+      </div>
+      <div class="form-group"><label>وصف الحساب <span class="req">*</span></label><textarea id="sDesc" required placeholder="مثال: حساب ماسي 120 نجمة، 5 ليجند..."></textarea></div>
+      <div class="form-group"><label>السعر المطلوب (IQD)</label><input type="number" id="sPrice" placeholder="50000"></div>
+      <div class="form-group"><label>واتساب <span class="req">*</span></label><input type="tel" id="sWA" required placeholder="07XX-XXX-XXXX"></div>
+      <div class="alert alert-info mb-16"><i class="fas fa-info-circle" style="flex-shrink:0"></i><div>عرض الإعلان مجاني — عمولة 5% تُؤخذ عند إتمام الصفقة فقط.</div></div>
+      <button class="btn btn-primary btn-full btn-lg" onclick="submitSell()"><i class="fas fa-bullhorn"></i> نشر الإعلان</button>
+    </div>
+  </div>
+</div>
+<!-- BUY MODAL -->
+<div class="modal-overlay" id="buyModal">
+  <div class="modal-box">
+    <div class="modal-head"><div class="modal-title" id="buyTitle">طلب شراء</div><button class="modal-close" onclick="document.getElementById('buyModal').classList.remove('open')">✕</button></div>
+    <div id="buyFormArea">
+      <div class="form-group"><label>اسمك <span class="req">*</span></label><input type="text" id="bName" required placeholder="اسمك"></div>
+      <div class="form-group"><label>واتساب <span class="req">*</span></label><input type="tel" id="bWA" required placeholder="07XX-XXX-XXXX"></div>
+      <div class="form-group"><label>ملاحظات</label><textarea id="bNotes" placeholder="أي تفاصيل..." style="min-height:70px"></textarea></div>
+      <input type="hidden" id="bListingId">
+      <div class="alert alert-warning mb-16"><i class="fas fa-exclamation-triangle" style="flex-shrink:0"></i><div>بعد إرسال الطلب، سيتواصل فريق ArenoX لترتيب الوساطة الآمنة.</div></div>
+      <button class="btn btn-success btn-full btn-lg" onclick="submitBuy()"><i class="fas fa-handshake"></i> إرسال طلب الشراء</button>
+    </div>
+  </div>
+</div>
+<style>
+@media(max-width:900px){.acc-layout{grid-template-columns:1fr !important;}}
+.how-step-num{width:30px;height:30px;border-radius:50%;background:rgba(0,230,118,0.15);border:1px solid rgba(0,230,118,0.35);display:flex;align-items:center;justify-content:center;font-family:Orbitron,sans-serif;font-weight:900;color:var(--green);font-size:.8rem;flex-shrink:0;}
+.acc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-md);padding:20px;transition:var(--t);min-width:0;}
+.acc-card:hover{border-color:rgba(188,0,255,0.4);transform:translateY(-3px);box-shadow:var(--glow-purple);}
+.acc-stats{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0;}
+.acc-stat{text-align:center;background:rgba(255,255,255,0.04);border-radius:var(--r-sm);padding:7px 14px;}
+.acc-stat .v{font-family:Orbitron,sans-serif;font-size:.9rem;font-weight:900;color:var(--gold);}
+.acc-stat .k{font-size:.7rem;color:var(--muted);}
+.acc-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.05);padding-top:14px;margin-top:12px;}
+@media(max-width:420px){
+  .acc-foot{flex-direction:column;align-items:stretch;text-align:center;}
+  .acc-foot button{width:100%;}
+}
+</style>
+<footer><h4>تابع مجتمع ArenoX الرسمي</h4>
+<div class="social-row">
+  <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
+  <a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://t.me/arenox7" class="social-btn" target="_blank"><i class="fab fa-telegram"></i></a>
+  <a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank"><i class="fab fa-youtube"></i></a>
+</div>
+<p class="powered">Powered by GeekX Engine</p></footer>
+<script src="../js/core.js"></script>
+<script>
+let ACCS=[
+  {id:'a1',game:'eFootball (PES)',type:'sell',name:'حساب ماسي eFootball',rank:'ماسي',stars:120,legends:5,price:75000,seller:'Al7uraib'},
+  {id:'a2',game:'EA FC 25',type:'trade',name:'حساب الطيار EA FC',rank:'ذهبي',stars:85,legends:2,price:0,seller:'Desert_King'},
+  {id:'a3',game:'eFootball (PES)',type:'sell',name:'حساب VIP Legend',rank:'ماسي',stars:200,legends:12,price:200000,seller:'GoldenBoot'},
+];
+let filtered=[...ACCS];
+function renderAccs(){
+  document.getElementById('accList').innerHTML=filtered.map(a=>`
+    <div class="acc-card">
+      <div class="flex-between mb-12">
+        <span class="badge ${a.type==='sell'?'badge-green':'badge-cyan'}">${a.type==='sell'?'🟢 للبيع':'🔵 للمبادلة'}</span>
+        <span style="font-size:var(--fs-xs);color:var(--muted)">${a.game}</span>
+      </div>
+      <div style="font-weight:800;font-size:var(--fs-md);margin-bottom:8px">${a.name}</div>
+      <div class="acc-stats">
+        <div class="acc-stat"><div class="v">${a.rank}</div><div class="k">الرتبة</div></div>
+        ${a.stars?`<div class="acc-stat"><div class="v">${a.stars}</div><div class="k">نجوم</div></div>`:''}
+        ${a.legends?`<div class="acc-stat"><div class="v">${a.legends}</div><div class="k">ليجند</div></div>`:''}
+      </div>
+      <div class="acc-foot">
+        <div><div style="font-family:Orbitron,sans-serif;font-weight:900;font-size:1rem;color:${a.price?'var(--green)':'var(--cyan)'}">${a.price?fmtNum(a.price)+' IQD':'مبادلة'}</div><div style="font-size:var(--fs-xs);color:var(--muted)">${a.seller}</div></div>
+        <button class="btn btn-primary btn-sm" onclick="openBuy('${a.id}','${a.name}')">${a.type==='sell'?'🛒 اشترِ':'🔄 تواصل'}</button>
+      </div>
+    </div>`).join('');
+}
+function filterAcc(type,btn){
+  $$('#filterBtns button').forEach(b=>{b.className='btn btn-ghost btn-sm';});
+  btn.className='btn btn-primary btn-sm';
+  filtered=type==='all'?[...ACCS]:type==='sell'?ACCS.filter(a=>a.type==='sell'):type==='trade'?ACCS.filter(a=>a.type==='trade'):ACCS.filter(a=>a.game.toLowerCase().includes(type));
+  renderAccs();
+}
+function openBuy(id,name){
+  document.getElementById('bListingId').value=id;
+  document.getElementById('buyTitle').textContent='طلب: '+name;
+  document.getElementById('buyModal').classList.add('open');
+}
+async function submitSell(){
+  const data={service:'account_listing',game:document.getElementById('sGame').value,listingType:document.getElementById('sType').value,rank:document.getElementById('sRank').value,description:document.getElementById('sDesc').value,price:document.getElementById('sPrice').value,whatsapp:document.getElementById('sWA').value};
+  if(!data.game||!data.listingType||!data.description||!data.whatsapp){toast('يرجى تعبئة الحقول المطلوبة','warning');return;}
+  const r=await sendToServices(data);
+  if(r.success){
+    ACCS.push({id:r.orderId,game:data.game,type:data.listingType==='للبيع'?'sell':'trade',name:data.description.substring(0,40),rank:data.rank||'—',stars:0,legends:0,price:parseInt(data.price)||0,seller:'أنت'});
+    filtered=[...ACCS];renderAccs();
+    document.getElementById('sellFormArea').innerHTML='<div class="success-state"><div class="success-icon">📢</div><h3 style="color:var(--green)">تم نشر إعلانك!</h3><p>سيتم مراجعته وظهوره خلال ساعة.</p><div class="order-id-tag">'+r.orderId+'</div></div>';
+  } else toast('خطأ، تواصل واتساب','error');
+}
+async function submitBuy(){
+  const data={service:'account_purchase',buyerName:document.getElementById('bName').value,buyerWhatsapp:document.getElementById('bWA').value,listingId:document.getElementById('bListingId').value,notes:document.getElementById('bNotes').value};
+  if(!data.buyerName||!data.buyerWhatsapp){toast('يرجى تعبئة الحقول','warning');return;}
+  const r=await sendToServices(data);
+  if(r.success){document.getElementById('buyFormArea').innerHTML='<div class="success-state"><div class="success-icon">✅</div><h3 style="color:var(--green)">تم الطلب!</h3><p>سيتواصل معك الفريق لترتيب الوساطة.</p><div class="order-id-tag">'+r.orderId+'</div></div>';}
+  else toast('خطأ، تواصل واتساب','error');
+}
+document.addEventListener('DOMContentLoaded',()=>renderAccs());
+</script></body></html>

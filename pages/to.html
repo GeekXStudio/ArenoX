@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="التصنيف الرسمي للاعبي بيس موبايل – أرينوكس">
+  <title>أرينوكس رانكينجز | ARINOX RANKINGS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/ArenoX-responsive/css/to.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'">
+      <span class="logo-text">ArenoX</span>
+    </a>
+    <button class="nav-toggle" aria-label="القائمة">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="nav-links">
+      <a href="/ArenoX-responsive/index.html" class="active"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="tournaments.html"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="paid-tournaments.html"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="custom-tournament.html"><i class="fas fa-plus"></i> أنشئ بطولتك</a>
+      <a href="montage.html"><i class="fas fa-film"></i> مونتاج</a>
+      <a href="poster.html"><i class="fas fa-palette"></i> بوسترات</a>
+      <a href="certificates.html"><i class="fas fa-certificate"></i> شهادات</a>
+      <a href="accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+  </div>
+</nav>
+  <!-- شاشة التحميل -->
+  <div id="loading-screen" aria-label="جاري تحميل البيانات" role="status">
+    <div class="loader"></div>
+    <p>جاري تحديث التصنيفات...</p>
+  </div>
+
+  <!-- رأس الصفحة -->
+  <header>
+    <div class="logo-box">
+      <img src="/ArenoX-responsive/image/ArenoX-logo.png" alt="شعار أرينوكس" class="main-logo" loading="lazy" width="130" height="130">
+      <h1>أرينوكس <span>ARINOX</span></h1>
+      <p>🏆 التصنيف العام لبطولة بيس موبايل • PES Mobile Rankings</p>
+    </div>
+  </header>
+
+  <!-- شريط آخر تحديث -->
+  <div class="update-bar">
+    <span>🕒 آخر تحديث: <span id="last-update-time">جاري التحميل...</span></span>
+    <span class="status-dot" id="status-dot"></span>
+  </div>
+
+  <!-- بطاقات الإحصائيات -->
+  <section class="stats-container" aria-label="إحصائيات سريعة">
+    <div class="stat-card">
+      <span class="stat-val" id="stat-players">0</span>
+      <span class="stat-lbl">لاعب مسجل</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-val" id="stat-countries">0</span>
+      <span class="stat-lbl">دولة مشاركة</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-val" id="stat-max-points">0</span>
+      <span class="stat-lbl">أعلى نقاط</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-val" id="stat-total-titles">0</span>
+      <span class="stat-lbl">إجمالي الألقاب</span>
+    </div>
+  </section>
+
+  <!-- المنصة (Podium) -->
+  <section class="podium-container" id="podium-section" aria-label="منصة التتويج" style="display: none;">
+    <div class="podium-card silver-podium">
+      <div class="podium-avatar">🥈</div>
+      <div class="podium-name" id="podium-2-name">---</div>
+      <div class="podium-pts" id="podium-2-pts">0 PTS</div>
+      <div class="podium-base">المركز الثاني</div>
+    </div>
+    <div class="podium-card gold-podium">
+      <div class="podium-crown">👑</div>
+      <div class="podium-avatar">🥇</div>
+      <div class="podium-name" id="podium-1-name">---</div>
+      <div class="podium-pts" id="podium-1-pts">0 PTS</div>
+      <div class="podium-base">البطل</div>
+    </div>
+    <div class="podium-card bronze-podium">
+      <div class="podium-avatar">🥉</div>
+      <div class="podium-name" id="podium-3-name">---</div>
+      <div class="podium-pts" id="podium-3-pts">0 PTS</div>
+      <div class="podium-base">المركز الثالث</div>
+    </div>
+  </section>
+
+  <!-- أدوات التحكم -->
+  <div class="controls-wrapper">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="🔍 ابحث عن لاعب..." aria-label="البحث عن لاعب">
+      <button id="clear-search" aria-label="مسح البحث">✕</button>
+    </div>
+    <div class="filter-sort">
+      <label for="sort-select">ترتيب حسب:</label>
+      <select id="sort-select">
+        <option value="rank">الترتيب</option>
+        <option value="points">النقاط</option>
+        <option value="name">الاسم</option>
+        <option value="titles">الألقاب</option>
+        <option value="matches">المباريات</option>
+      </select>
+    </div>
+    <button class="refresh-btn" id="refresh-button" aria-label="تحديث التصنيفات">
+      <span class="refresh-icon">🔄</span> تحديث
+    </button>
+  </div>
+
+  <!-- الجدول الرئيسي -->
+  <main class="ranking-container">
+    <div class="points-system-bar">
+      <strong>نظام النقاط:</strong> الأول 100 | الثاني 50 | الثالث 30 | الرابع 20 | مشاركة 10 | فوز 5
+    </div>
+    <div class="table-container">
+      <table class="ranking-table" role="table">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col">اللاعب</th>
+            <th scope="col" class="text-center">الدولة</th>
+            <th scope="col" class="text-center">المباريات</th>
+            <th scope="col" class="text-center">الألقاب 🏆</th>
+            <th scope="col" class="text-center">النقاط</th>
+            <th scope="col" class="text-center">الحالة</th>
+          </tr>
+        </thead>
+        <tbody id="ranking-data">
+          <tr>
+            <td colspan="7" class="text-center" style="padding: 40px; color: var(--text-muted);">
+              جاري تحميل البيانات...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Toast للإشعارات -->
+  <div id="toast" role="alert" aria-live="polite" style="display: none;"></div>
+
+  <script src="/ArenoX-responsive/js/to.js" defer></script>
+  <footer>
+  <h4>تابع مجتمع ArenoX الرسمي</h4>
+  <div class="social-row">
+    <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://t.me/arenox7" class="social-btn" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+    <a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+  <div class="footer-nav">
+    <a href="tournaments.html">البطولة</a>
+    <a href="custom-tournament.html">بطولة مخصصة</a>
+    <a href="payment.html">الخدمات</a>
+    <a href="accounts.html">سوق الحسابات</a>
+    <a href="predictions.html">التوقعات</a>
+  </div>
+  <p class="powered">Powered by GeekX Engine</p>
+</footer>
+</body>
+</html>

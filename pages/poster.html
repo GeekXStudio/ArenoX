@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مولّد البوسترات — ArenoX</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../image/ArenoX-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="img-background"><img src="../image/stadium-glow.jpg" alt="ArenoX"></div><nav class="navbar"><div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="../image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'"><span class="logo-text">ArenoX</span></a>
+    <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links">
+      <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="tournaments.html"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="paid-tournaments.html"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="custom-tournament.html"><i class="fas fa-crown"></i> بطولتك</a>
+      <a href="montage.html"><i class="fas fa-film"></i> مونتاج</a>
+      <a href="poster.html"><i class="fas fa-palette"></i> بوسترات</a>
+      <a href="certificates.html"><i class="fas fa-certificate"></i> شهادات</a>
+      <a href="accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+</div></nav>
+<section class="hero"><div class="hero-glow"></div>
+  <div class="hero-badge"><i class="fas fa-palette"></i> مولّد البوسترات الاحترافي</div>
+  <h1>بوسترك جاهز<br><span class="line2 grad-purple">بضغطة زر</span></h1>
+  <p>أدخل الأسماء — يُولَّد بوستر يوم المباراة احترافي جاهز للستوري والريلز. مجاناً!</p>
+</section>
+<section class="section"><div class="container poster-layout" style="display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start">
+  <div>
+    <h3 style="font-size:var(--fs-lg);font-weight:900;margin-bottom:16px">👁️ المعاينة</h3>
+    <div style="border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);margin-bottom:16px"><canvas id="posterCanvas" width="1080" height="1080" style="width:100%;display:block"></canvas></div>
+    <div class="flex" style="gap:12px;flex-wrap:wrap">
+      <button class="btn btn-primary btn-lg" onclick="dlPoster('square')"><i class="fas fa-download"></i> تنزيل (مربع)</button>
+      <button class="btn btn-outline btn-lg" onclick="dlPoster('story')"><i class="fas fa-mobile-alt"></i> تنزيل ستوري (9:16)</button>
+    </div>
+  </div>
+  <div>
+    <div class="form-card" style="padding:26px">
+      <div class="form-sec-title"><i class="fas fa-paint-brush"></i> قوالب</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px">
+        <div class="t-thumb active" id="th0" onclick="setTheme(0,this)" style="background:linear-gradient(135deg,#0A0A0F,#1A0A2E);border-radius:10px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;border:2px solid var(--violet)">🌌</div>
+        <div class="t-thumb" id="th1" onclick="setTheme(1,this)" style="background:linear-gradient(135deg,#1A0000,#3D0000);border-radius:10px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;border:2px solid transparent">🔥</div>
+        <div class="t-thumb" id="th2" onclick="setTheme(2,this)" style="background:linear-gradient(135deg,#001A00,#003300);border-radius:10px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;border:2px solid transparent">⚡</div>
+        <div class="t-thumb" id="th3" onclick="setTheme(3,this)" style="background:linear-gradient(135deg,#001030,#001A50);border-radius:10px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;border:2px solid transparent">🌊</div>
+      </div>
+      <div class="form-sec-title"><i class="fas fa-edit"></i> التفاصيل</div>
+      <div class="form-group"><label>👤 اللاعب الأول</label><input type="text" id="pp1" value="ZiZo_GG" oninput="renderPoster()"></div>
+      <div class="form-group"><label>👤 اللاعب الثاني</label><input type="text" id="pp2" value="KingMessi10" oninput="renderPoster()"></div>
+      <div class="form-group"><label>🏆 اسم الحدث</label><input type="text" id="pEvent" value="نهائي بطولة ArenoX" oninput="renderPoster()"></div>
+      <div class="form-group"><label>⏰ الوقت</label><input type="text" id="pTime" value="الجمعة 21:00" oninput="renderPoster()"></div>
+      <div class="form-group"><label>🎮 اللعبة</label><select id="pGame" onchange="renderPoster()"><option>eFootball</option><option>EA FC 25</option><option>FIFA</option><option>COD</option></select></div>
+    </div>
+  </div>
+</div></section>
+<style>
+@media(max-width:900px){.poster-layout{grid-template-columns:1fr !important;}}
+.t-thumb{transition:var(--t);}
+</style>
+<footer><h4>تابع مجتمع ArenoX الرسمي</h4>
+<div class="social-row">
+  <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
+  <a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://t.me/arenox7" class="social-btn" target="_blank"><i class="fab fa-telegram"></i></a>
+  <a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank"><i class="fab fa-youtube"></i></a>
+</div><p class="powered">Powered by GeekX Engine</p></footer>
+<script src="../js/core.js"></script>
+<script>
+// Fallback for older browsers without native roundRect
+if (!CanvasRenderingContext2D.prototype.roundRect) {
+  CanvasRenderingContext2D.prototype.roundRect = function(x,y,w,h,r){
+    this.moveTo(x+r,y);this.lineTo(x+w-r,y);this.quadraticCurveTo(x+w,y,x+w,y+r);
+    this.lineTo(x+w,y+h-r);this.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+    this.lineTo(x+r,y+h);this.quadraticCurveTo(x,y+h,x,y+h-r);
+    this.lineTo(x,y+r);this.quadraticCurveTo(x,y,x+r,y);
+    return this;
+  };
+}
+const THEMES=[
+  {bg1:"#0A0A0F",bg2:"#1A0A2E",ac:"#F0B429",ac2:"#7B4FE9"},
+  {bg1:"#1A0000",bg2:"#3D0000",ac:"#FF4D00",ac2:"#FFB800"},
+  {bg1:"#001A00",bg2:"#003300",ac:"#2DC653",ac2:"#F0B429"},
+  {bg1:"#001030",bg2:"#001A50",ac:"#4A90E2",ac2:"#A880FF"},
+];
+let curTheme=0;
+function setTheme(i,el){
+  curTheme=i;
+  $$('.t-thumb').forEach((t,idx)=>t.style.border=idx===i?'2px solid var(--violet)':'2px solid transparent');
+  renderPoster();
+}
+function renderPoster(){
+  const cv=document.getElementById('posterCanvas'),ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height,T=THEMES[curTheme];
+  const p1=document.getElementById('pp1').value||'اللاعب الأول';
+  const p2=document.getElementById('pp2').value||'اللاعب الثاني';
+  const ev=document.getElementById('pEvent').value;
+  const tm=document.getElementById('pTime').value;
+  const gm=document.getElementById('pGame').value;
+  const bg=ctx.createLinearGradient(0,0,W,H);bg.addColorStop(0,T.bg1);bg.addColorStop(1,T.bg2);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+  ctx.globalAlpha=.12;ctx.fillStyle=T.ac;ctx.beginPath();ctx.arc(220,220,320,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle=T.ac2;ctx.beginPath();ctx.arc(W-220,H-220,300,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
+  ctx.fillStyle=T.ac;ctx.fillRect(0,0,W,8);
+  ctx.font='bold 38px Orbitron,sans-serif';ctx.textAlign='center';ctx.fillText('ARENOX',W/2,78);
+  ctx.fillStyle='#fff';ctx.font='bold 50px Cairo,sans-serif';ctx.fillText(ev,W/2,165);
+  ctx.fillStyle=T.ac;ctx.font='bold 28px Cairo,sans-serif';ctx.fillText('🎮 '+gm,W/2,220);
+  ctx.fillStyle=T.ac+'22';ctx.beginPath();ctx.roundRect(80,310,360,320,18);ctx.fill();
+  ctx.fillStyle='#fff';ctx.font='bold 56px Cairo,sans-serif';ctx.fillText('👤',270,420);ctx.fillText(p1,270,500);
+  ctx.fillStyle=T.ac;ctx.font='bold 90px Orbitron,sans-serif';ctx.fillText('VS',W/2,500);
+  ctx.fillStyle=T.ac2+'22';ctx.beginPath();ctx.roundRect(W-440,310,360,320,18);ctx.fill();
+  ctx.fillStyle='#fff';ctx.font='bold 56px Cairo,sans-serif';ctx.fillText('👤',W-270,420);ctx.fillText(p2,W-270,500);
+  ctx.strokeStyle=T.ac;ctx.lineWidth=1.5;ctx.globalAlpha=.3;ctx.beginPath();ctx.moveTo(100,680);ctx.lineTo(W-100,680);ctx.stroke();ctx.globalAlpha=1;
+  ctx.fillStyle='#fff';ctx.font='bold 44px Cairo,sans-serif';ctx.fillText('⏰ '+tm,W/2,760);
+  ctx.fillStyle=T.ac;ctx.fillRect(0,H-8,W,8);
+  ctx.globalAlpha=.45;ctx.font='26px Orbitron,sans-serif';ctx.fillText('arenox.gg',W/2,H-24);ctx.globalAlpha=1;
+}
+function dlPoster(type){
+  renderPoster();
+  const cv=document.getElementById('posterCanvas');
+  if(type==='story'){
+    const sc=document.createElement('canvas');sc.width=1080;sc.height=1920;
+    const sctx=sc.getContext('2d');sctx.fillStyle='#06020b';sctx.fillRect(0,0,1080,1920);
+    sctx.drawImage(cv,0,(1920-1080)/2,1080,1080);
+    const a=document.createElement('a');a.href=sc.toDataURL('image/png');a.download='arenox_story.png';a.click();
+  } else {
+    const a=document.createElement('a');a.href=cv.toDataURL('image/png');a.download='arenox_poster.png';a.click();
+  }
+  toast('تم التنزيل 🎨','success');
+}
+document.addEventListener('DOMContentLoaded',renderPoster);
+</script></body></html>

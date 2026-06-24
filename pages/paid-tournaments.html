@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>البطولات المدفوعة — ArenoX</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../image/ArenoX-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .pt-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(290px,1fr)); gap:20px; }
+    .pt-card { padding:22px; display:flex; flex-direction:column; gap:10px; }
+    .pt-head { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+    .pt-name { font-size:var(--fs-md); font-weight:900; color:var(--gold); line-height:1.4; }
+    .pt-row { display:flex; justify-content:space-between; font-size:var(--fs-sm); padding:6px 0; border-bottom:1px solid var(--border); }
+    .pt-row:last-of-type { border-bottom:none; }
+    .pt-row span:first-child { color:var(--muted); }
+    .pt-dates { background:rgba(0,242,254,0.06); border:1px solid rgba(0,242,254,0.2); border-radius:var(--r-sm); padding:9px 12px; font-size:var(--fs-xs); color:var(--cyan); text-align:center; font-weight:700; }
+    .pt-empty { text-align:center; padding:60px 20px; color:var(--muted); }
+  </style>
+</head>
+<body>
+<div class="img-background"><img src="../image/stadium-glow.jpg" alt="ArenoX"></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'">
+      <span class="logo-text">ArenoX</span>
+    </a>
+    <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links">
+      <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="tournaments.html"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="paid-tournaments.html" class="active"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="custom-tournament.html"><i class="fas fa-plus"></i> أنشئ بطولتك</a>
+      <a href="accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow" style="background:radial-gradient(circle,rgba(240,180,41,0.15),transparent 70%)"></div>
+  <div class="hero-badge" style="background:rgba(240,180,41,0.12);border-color:rgba(240,180,41,0.4);color:var(--gold)">
+    <i class="fas fa-crown"></i> بطولات خاصة منشورة رسمياً
+  </div>
+  <h1>البطولات <span class="line2 grad-gold">المدفوعة</span></h1>
+  <p>كل البطولات الخاصة المنظَّمة من قبل أعضاء مجتمعنا، تحت إشراف ArenoX الرسمي.</p>
+</section>
+
+<section class="section" id="dashboard">
+  <div class="container">
+    <div id="listArea">
+      <div style="text-align:center;padding:50px">
+        <span class="spinner" style="width:36px;height:36px;border-width:3.5px"></span>
+        <p style="margin-top:16px;color:var(--muted)">جاري تحميل البطولات...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h4>تابع مجتمع ArenoX الرسمي</h4>
+  <div class="social-row">
+    <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://t.me/arenox7" class="social-btn" target="_blank"><i class="fab fa-telegram"></i></a>
+    <a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p class="powered">Powered by GeekX Engine</p>
+</footer>
+
+<script src="../js/core.js"></script>
+<script>
+async function loadPaidTournaments() {
+  const area = document.getElementById('listArea');
+  try {
+    const res  = await fetch(ARENOX.SCRIPT_URL + '?get=paidtournaments');
+    const data = await res.json();
+    const list = data?.tournaments || [];
+
+    if (!list.length) {
+      area.innerHTML = `
+        <div class="pt-empty">
+          <div style="font-size:3.5rem;margin-bottom:14px">🏟️</div>
+          <h3 style="color:var(--muted)">لا توجد بطولات مدفوعة منشورة حالياً</h3>
+          <p style="margin-top:8px">كن أول من ينظّم بطولته الخاصة!</p>
+          <a href="custom-tournament.html" class="btn btn-gold mt-16"><i class="fas fa-crown"></i> أنشئ بطولتك الآن</a>
+        </div>`;
+      return;
+    }
+
+    const today = new Date().toISOString().slice(0,10);
+    area.innerHTML = `<div class="pt-grid">${list.map(t => {
+      const isLive = t.startDate <= today && today <= t.endDate;
+      const isDone = today > t.endDate;
+      const badge  = isLive ? '<span class="badge status-live">جارية الآن</span>'
+                   : isDone ? '<span class="badge" style="background:rgba(139,135,152,0.15);color:var(--muted);border:1px solid rgba(139,135,152,0.3)">انتهت</span>'
+                   : '<span class="badge status-pending">قادمة</span>';
+      return `
+        <div class="card pt-card">
+          <div class="pt-head">
+            <div class="pt-name">${t.tournamentName}</div>
+            ${badge}
+          </div>
+          <div class="pt-row"><span>اللعبة</span><span>${t.game||'—'}</span></div>
+          <div class="pt-row"><span>عدد اللاعبين</span><span>${t.size||'—'}</span></div>
+          <div class="pt-row"><span>المنظم</span><span>${t.organizerName||'—'}</span></div>
+          ${t.startDate ? `<div class="pt-dates"><i class="fas fa-calendar-alt"></i> ${t.startDate} → ${t.endDate}</div>` : ''}
+          <a href="${t.bracketUrl}" class="btn btn-gold btn-full mt-8"><i class="fas fa-sitemap"></i> مشاهدة الشجرة</a>
+        </div>`;
+    }).join('')}</div>`;
+  } catch (e) {
+    area.innerHTML = `<p style="text-align:center;color:var(--red);padding:40px"><i class="fas fa-exclamation-triangle"></i> تعذّر تحميل البطولات، حاول لاحقاً.</p>`;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadPaidTournaments);
+</script>
+</body>
+</html>

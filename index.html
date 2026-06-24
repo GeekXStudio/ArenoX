@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#06020b">
+  <title>ArenoX — المنصة الأولى للمنافسين العرب 🏟️</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="image/ArenoX-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="img-background"><img src="image/stadium-glow.jpg" alt="ArenoX Arena"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'">
+      <span class="logo-text">ArenoX</span>
+    </a>
+    <button class="nav-toggle" aria-label="القائمة">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="nav-links">
+      <a href="index.html" class="active"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="pages/tournaments.html"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="pages/paid-tournaments.html"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="pages/custom-tournament.html"><i class="fas fa-plus"></i> أنشئ بطولتك</a>
+      <a href="pages/montage.html"><i class="fas fa-film"></i> مونتاج</a>
+      <a href="pages/poster.html"><i class="fas fa-palette"></i> بوسترات</a>
+      <a href="pages/certificates.html"><i class="fas fa-certificate"></i> شهادات</a>
+      <a href="pages/accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="pages/payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge"><i class="fas fa-bolt"></i> المنصة الرسمية للمنافسين العرب 🇮🇶</div>
+  <h1>
+    تنافس، تصدّر، اصنع<br>
+    <span class="line2 grad-purple">أسطورتك مع ArenoX</span>
+  </h1>
+  <p>بطولات مجانية حقيقية، خدمات احترافية، ومجتمع تنافسي نظيف 100% — كل ما يحتاجه اللاعب العربي.</p>
+  <div class="hero-btns">
+    <a href="pages/tournaments.html" class="btn btn-primary btn-lg">
+      <i class="fas fa-trophy"></i> انضم للبطولة مجاناً
+    </a>
+    <a href="pages/custom-tournament.html" class="btn btn-gold btn-lg">
+      <i class="fas fa-crown"></i> نظّم بطولتك الخاصة
+    </a>
+    <a href="pages/payment.html" class="btn btn-outline btn-lg">
+      <i class="fas fa-star"></i> الخدمات
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="num">64</span>
+      <span class="lbl">لاعب في البطولة</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">6</span>
+      <span class="lbl">أدوار حتى التتويج</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">8+</span>
+      <span class="lbl">خدمة احترافية</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">100%</span>
+      <span class="lbl">تنافس نظيف</span>
+    </div>
+  </div>
+</section>
+
+<!-- عداد المقاعد -->
+<div style="text-align:center;padding:0 20px 8px">
+  <div class="counter-box" id="counterBox">
+    <span style="color:var(--violet);font-size:1.1rem">●</span>
+    جاري تحميل المقاعد المتبقية...
+  </div>
+</div>
+
+<!-- ══ بطولة 64 لاعب ══ -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>🏆 بطولة ArenoX الرسمية</h2>
+      <p>64 لاعب — قرعة عشوائية — 6 أدوار حتى التتويج — مجاناً تماماً</p>
+    </div>
+    <div class="grid-2">
+      <!-- بطاقة البطولة -->
+      <div class="t-card">
+        <div class="t-card-accent"></div>
+        <div class="t-card-img">
+          <span class="t-badge">🏆 الرسمية</span>
+          <span class="big-emoji">⚽</span>
+          <span class="size-txt">64 PLAYERS</span>
+        </div>
+        <div class="t-card-body">
+          <h3>بطولة الأبطال — 64 لاعب</h3>
+          <p>البطولة الرسمية الوحيدة لـ ArenoX. سجّل مجاناً، تنافس بشرف، وصعّد في التصنيف العام.</p>
+          <div class="cap-bar-wrap" id="homeCapWrap">
+            <div class="cap-label">
+              <span id="homeRegCount">المسجلون: جاري التحميل...</span>
+              <span id="homeRemCount" style="color:var(--green)"></span>
+            </div>
+            <div class="cap-bar"><div class="cap-fill" id="homeCapFill" style="width:0%"></div></div>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <div class="badge badge-purple"><i class="fas fa-users"></i> 64 لاعب</div>
+            <div class="badge badge-cyan"><i class="fas fa-flag-checkered"></i> 6 أدوار</div>
+            <div class="badge badge-green"><i class="fas fa-gift"></i> مجاني</div>
+          </div>
+        </div>
+        <div class="t-card-foot">
+          <span class="players-tag"><i class="fas fa-gamepad"></i> eFootball / FIFA</span>
+          <a href="pages/tournaments.html" class="btn btn-primary"><i class="fas fa-paper-plane"></i> سجّل الآن</a>
+        </div>
+      </div>
+
+      <!-- بطاقة البطولة المخصصة -->
+      <div class="t-card" style="border-color:rgba(240,180,41,0.3)">
+        <div class="t-card-accent" style="background:linear-gradient(90deg,#f0b429,#ff8c00)"></div>
+        <div class="t-card-img" style="background:linear-gradient(135deg,#1a0f00,#2e1a00)">
+          <span class="t-badge" style="background:rgba(240,180,41,0.2);border-color:rgba(240,180,41,0.5);color:var(--gold)">👑 مدفوعة</span>
+          <span class="big-emoji">👑</span>
+          <span class="size-txt" style="color:var(--gold)">YOUR TOURNAMENT</span>
+        </div>
+        <div class="t-card-body">
+          <h3>بطولتك الخاصة 🌟</h3>
+          <p>أنت تختار اللاعبين والاسم والتوقيت — نحن ننظم كل شيء: الشجرة، النشر، والإشراف الرسمي.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <div class="badge badge-gold"><i class="fas fa-users"></i> 8 - 64 لاعب</div>
+            <div class="badge badge-orange"><i class="fas fa-cog"></i> تنظيم كامل</div>
+            <div class="badge badge-purple"><i class="fas fa-share-alt"></i> نشر رسمي</div>
+          </div>
+        </div>
+        <div class="t-card-foot" style="background:rgba(240,180,41,0.05)">
+          <div>
+            <div style="font-family:'Orbitron',sans-serif;font-size:1.05rem;font-weight:900;color:var(--gold)">من 5,000 IQD</div>
+            <div style="font-size:.78rem;color:var(--muted)">حسب عدد اللاعبين</div>
+          </div>
+          <a href="pages/custom-tournament.html" class="btn btn-gold"><i class="fas fa-crown"></i> نظّم الآن</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ الخدمات ══ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-title">
+      <h2>🎯 خدمات ArenoX الاحترافية</h2>
+      <p>من المونتاج إلى الشهادات الرقمية — ابرز كلاعب محترف</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card" style="--accent:linear-gradient(90deg,#bc00ff,#7000ff)">
+        <div class="svc-icon">🎬</div>
+        <div class="svc-title">مونتاج اللقطات</div>
+        <div class="svc-desc">أرسل مقطعك الخام — نُنتج فيديو TikTok/Reels احترافي مع موسيقى حماسية وشعارك في 24 ساعة.</div>
+        <div class="svc-foot">
+          <div><div class="svc-price">2,500 IQD</div><div style="font-size:.75rem;color:var(--muted)">لكل مقطع</div></div>
+          <a href="pages/montage.html" class="btn btn-primary btn-sm">اطلب</a>
+        </div>
+      </div>
+
+      <div class="svc-card" style="--accent:linear-gradient(90deg,#f0b429,#ff8c00)">
+        <div class="svc-icon">🎨</div>
+        <div class="svc-title">مولّد البوسترات</div>
+        <div class="svc-desc">أدخل اسمك واسم خصمك — بوستر احترافي لستوري إنستغرام وتيك توك بضغطة زر. مجاني!</div>
+        <div class="svc-foot">
+          <div><div class="svc-price" style="color:var(--green)">مجاناً</div><div style="font-size:.75rem;color:var(--muted)">فوري</div></div>
+          <a href="pages/poster.html" class="btn btn-outline btn-sm">جرّب</a>
+        </div>
+      </div>
+
+      <div class="svc-card" style="--accent:linear-gradient(90deg,#00e676,#00bfa5)">
+        <div class="svc-icon">🏆</div>
+        <div class="svc-title">شهادة الإنجاز الرقمية</div>
+        <div class="svc-desc">شهادة رسمية بـ QR Code موثّق تُثبت فوزك للأبد — شاركها مع ثقة كاملة.</div>
+        <div class="svc-foot">
+          <div><div class="svc-price">1,500 IQD</div><div style="font-size:.75rem;color:var(--muted)">لكل شهادة</div></div>
+          <a href="pages/certificates.html" class="btn btn-primary btn-sm">احصل عليها</a>
+        </div>
+      </div>
+
+      <div class="svc-card" style="--accent:linear-gradient(90deg,#00f2fe,#7000ff)">
+        <div class="svc-icon">🛡️</div>
+        <div class="svc-title">سوق الحسابات الآمن</div>
+        <div class="svc-desc">بيع أو اشترِ حساباً تحت وساطة المنصة الموثوقة — نضمن حقوق الطرفين بعمولة 5% فقط.</div>
+        <div class="svc-foot">
+          <div><div class="svc-price">5%</div><div style="font-size:.75rem;color:var(--muted)">من قيمة الصفقة</div></div>
+          <a href="pages/accounts.html" class="btn btn-primary btn-sm">السوق</a>
+        </div>
+      </div>
+
+      <div class="svc-card" style="--accent:linear-gradient(90deg,#ff00ea,#bc00ff)">
+        <div class="svc-icon">⚔️</div>
+        <div class="svc-title">مباراة التحدي الخاصة</div>
+        <div class="svc-desc">ديربي رسمي بإشراف المنصة — جدول، حكم، بوستر، وأرشيف مواجهات دائم بينك وخصمك.</div>
+        <div class="svc-foot">
+          <div><div class="svc-price">5,000 IQD</div><div style="font-size:.75rem;color:var(--muted)">لكل مباراة</div></div>
+          <a href="pages/matchmaking.html" class="btn btn-primary btn-sm">احجز</a>
+        </div>
+      </div>
+
+      <div class="svc-card" style="--accent:linear-gradient(90deg,#7000ff,#00f2fe)">
+        <div class="svc-icon">🔮</div>
+        <div class="svc-title">صندوق التوقعات</div>
+        <div class="svc-desc">توقّع الفائز في مباريات البطولة واجمع نقاطاً رقمية — تنافس في لوحة المتصدرين مجاناً.</div>
+        <div class="svc-foot">
+          <div><div class="svc-price" style="color:var(--green)">مجاناً</div></div>
+          <a href="pages/predictions.html" class="btn btn-outline btn-sm">شارك</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ لماذا ArenoX ══ -->
+<section class="section">
+  <div class="container">
+    <div class="section-title"><h2>💡 لماذا ArenoX؟</h2></div>
+    <div class="why-grid">
+      <div class="why-card"><div class="wi">🏆</div><h4>بطولات مجانية</h4><p>لا رسوم ولا رهانات — تنافس نظيف 100%</p></div>
+      <div class="why-card"><div class="wi">⚡</div><h4>قرعة تلقائية</h4><p>جدول واضح فور اكتمال التسجيل</p></div>
+      <div class="why-card"><div class="wi">👑</div><h4>بطولتك الخاصة</h4><p>أنت تختار اللاعبين ونحن ننظم كل شيء</p></div>
+      <div class="why-card"><div class="wi">🛡️</div><h4>وساطة آمنة</h4><p>صفقات الحسابات تحت إشراف مباشر</p></div>
+      <div class="why-card"><div class="wi">🎬</div><h4>محتوى احترافي</h4><p>مونتاج وبوسترات وشهادات بجودة عالية</p></div>
+      <div class="why-card"><div class="wi">📊</div><h4>تصنيف عام</h4><p>نقاط تراكمية تحدد مكانك بين الأبطال</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="section section-dark" style="text-align:center">
+  <div class="container-sm">
+    <h2 style="font-size:clamp(1.8rem,5vw,3rem);margin-bottom:14px">هل أنت مستعد؟ 🚀</h2>
+    <p style="color:var(--muted);font-size:var(--fs-md);margin-bottom:36px;line-height:1.7">
+      انضم للبطولة الرسمية مجاناً، أو نظّم بطولتك الخاصة باحترافية كاملة.
+    </p>
+    <div class="hero-btns">
+      <a href="pages/tournaments.html" class="btn btn-primary btn-xl"><i class="fas fa-trophy"></i> سجّل في البطولة</a>
+      <a href="pages/custom-tournament.html" class="btn btn-gold btn-xl"><i class="fas fa-crown"></i> نظّم بطولتك</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h4>تابع مجتمع ArenoX الرسمي</h4>
+  <div class="social-row">
+    <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://t.me/arenox7" class="social-btn" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+    <a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+  <div class="footer-nav">
+    <a href="pages/tournaments.html">البطولة</a>
+    <a href="pages/custom-tournament.html">بطولة مخصصة</a>
+    <a href="pages/payment.html">الخدمات</a>
+    <a href="pages/accounts.html">سوق الحسابات</a>
+    <a href="pages/predictions.html">التوقعات</a>
+  </div>
+  <p class="powered">Powered by GeekX Engine</p>
+</footer>
+
+<script src="js/core.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  loadCount(count => {
+    updateCounter('counterBox');
+    const rem  = ARENOX.MAX_PLAYERS - count;
+    const pct  = Math.min((count / ARENOX.MAX_PLAYERS) * 100, 100);
+    const full = rem <= 0;
+    const regEl  = document.getElementById('homeRegCount');
+    const remEl  = document.getElementById('homeRemCount');
+    const fillEl = document.getElementById('homeCapFill');
+    if (regEl)  regEl.textContent  = `المسجلون: ${count} / ${ARENOX.MAX_PLAYERS}`;
+    if (remEl)  { remEl.textContent = full ? 'مكتملة' : `${rem} مقعد متبقي`; remEl.style.color = full ? 'var(--red)' : 'var(--green)'; }
+    if (fillEl) { fillEl.style.width = pct+'%'; if (full) fillEl.classList.add('full'); }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مباراة التحدي — ArenoX</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../image/ArenoX-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+  @media(max-width:480px){
+    .vs-preview-row{grid-template-columns:1fr !important;gap:8px !important;}
+    .vs-preview-row > div:nth-child(2){order:2;}
+  }
+  </style>
+</head>
+<body>
+<div class="img-background"><img src="../image/stadium-glow.jpg" alt="ArenoX"></div><nav class="navbar"><div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="../image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'"><span class="logo-text">ArenoX</span></a>
+    <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links">
+      <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="tournaments.html"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="paid-tournaments.html"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="custom-tournament.html"><i class="fas fa-crown"></i> بطولتك</a>
+      <a href="montage.html"><i class="fas fa-film"></i> مونتاج</a>
+      <a href="poster.html"><i class="fas fa-palette"></i> بوسترات</a>
+      <a href="certificates.html"><i class="fas fa-certificate"></i> شهادات</a>
+      <a href="accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+</div></nav>
+<section class="hero"><div class="hero-glow"></div>
+  <div class="hero-badge"><i class="fas fa-swords"></i> مباراة التحدي الخاصة</div>
+  <h1>ديربيك الشخصي<br><span class="line2 grad-purple">تحت إشراف رسمي</span></h1>
+  <p>نظّم مباراة تحدٍّ رسمية بينك وبين خصمك — جدول، حكم، بوستر، وأرشيف المواجهات.</p>
+</section>
+<section class="section"><div class="container-sm">
+  <div class="tabs-bar"><button id="btn-tab-derby" class="tab-btn active" onclick="switchTab2('derby')"><i class="fas fa-swords"></i> مباراة تحدي</button><button id="btn-tab-reschedule" class="tab-btn" onclick="switchTab2('reschedule')"><i class="fas fa-calendar-alt"></i> تغيير التوقيت</button></div>
+  <div id="tab-derby">
+    <div id="derbyArea">
+      <div class="form-card">
+        <div class="vs-preview-row" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;text-align:center;margin-bottom:24px">
+          <div><div style="font-size:2.5rem">👤</div><div style="font-weight:800;color:var(--violet);overflow-wrap:break-word" id="p1Preview">اللاعب الأول</div></div>
+          <div style="font-family:Orbitron,sans-serif;font-size:1.5rem;font-weight:900;color:var(--purple)">VS</div>
+          <div><div style="font-size:2.5rem">👤</div><div style="font-weight:800;color:var(--cyan);overflow-wrap:break-word" id="p2Preview">اللاعب الثاني</div></div>
+        </div>
+        <div class="form-row"><div class="form-group"><label>اسمك <span class="req">*</span></label><input type="text" id="dp1" required placeholder="اسمك" oninput="document.getElementById('p1Preview').textContent=this.value||'اللاعب الأول'"></div><div class="form-group"><label>اسم الخصم <span class="req">*</span></label><input type="text" id="dp2" required placeholder="اسم خصمك" oninput="document.getElementById('p2Preview').textContent=this.value||'اللاعب الثاني'"></div></div>
+        <div class="form-row"><div class="form-group"><label>اللعبة <span class="req">*</span></label><select id="dGame" required><option value="">اختر...</option><option>eFootball</option><option>EA FC</option><option>أخرى</option></select></div><div class="form-group"><label>تاريخ المباراة <span class="req">*</span></label><input type="datetime-local" id="dDate" required></div></div>
+        <div class="form-group"><label>واتساب <span class="req">*</span></label><input type="tel" id="dWA" required placeholder="07XX-XXX-XXXX"></div>
+        <div class="card" style="border-color:rgba(188,0,255,0.3);margin-bottom:18px">
+          <h4 style="font-weight:800;margin-bottom:12px"><i class="fas fa-check-circle" style="color:var(--green)"></i> ماذا تشمل الخدمة؟</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div class="flex" style="gap:8px;font-size:var(--fs-sm)"><span style="color:var(--green)">✅</span>بوستر إعلاني</div>
+            <div class="flex" style="gap:8px;font-size:var(--fs-sm)"><span style="color:var(--green)">✅</span>حكم رقابي</div>
+            <div class="flex" style="gap:8px;font-size:var(--fs-sm)"><span style="color:var(--green)">✅</span>أرشيف H2H</div>
+            <div class="flex" style="gap:8px;font-size:var(--fs-sm)"><span style="color:var(--green)">✅</span>توثيق النتيجة</div>
+          </div>
+        </div>
+        <div class="pay-box" id="derbyPay">
+          <div class="pay-tabs"><button class="pay-tab active" data-tab="dpiq">🇮🇶 العراق</button><button class="pay-tab" data-tab="dpintl">🌍 دولي</button></div>
+          <div id="dpiq" class="pay-content active"><div class="pay-method" data-method="asia"><div class="pay-method-ico">📱</div><div class="pay-method-info"><h4>آسيا سيل</h4></div></div><div class="pay-method" data-method="zain"><div class="pay-method-ico">💚</div><div class="pay-method-info"><h4>زين كاش</h4></div></div></div>
+          <div id="dpintl" class="pay-content"><div class="pay-method" data-method="google"><div class="pay-method-ico">🎁</div><div class="pay-method-info"><h4>Google Play</h4></div></div><div class="pay-method" data-method="apple"><div class="pay-method-ico">🍎</div><div class="pay-method-info"><h4>Apple Gift</h4></div></div></div>
+          <div class="form-group mt-12"><label>إيصال / كود <span class="req">*</span></label><input type="text" id="dPayCode" required placeholder="أدخل هنا"></div>
+          <div class="order-sum"><div class="o-row"><span>تنظيم مباراة التحدي</span><span style="color:var(--gold)">5,000 IQD</span></div><div class="o-row o-total"><strong>الإجمالي</strong><strong style="color:var(--gold)">5,000 IQD</strong></div></div>
+        </div>
+        <button class="btn btn-primary btn-full btn-lg mt-16" onclick="submitDerby()"><i class="fas fa-swords"></i> احجز المباراة</button>
+      </div>
+      <div id="notifBox" style="margin-top:12px"></div>
+    </div>
+  </div>
+  <div id="tab-reschedule" style="display:none">
+    <div id="rescArea">
+      <div class="form-card">
+        <div class="alert alert-warning mb-20"><i class="fas fa-clock" style="flex-shrink:0;font-size:1.1rem"></i><div>يتطلب موافقة الخصم — سيتواصل الفريق مع الطرف الآخر للتأكيد.</div></div>
+        <div class="form-row"><div class="form-group"><label>اسمك <span class="req">*</span></label><input type="text" id="rp" required placeholder="اسمك"></div><div class="form-group"><label>اسم الخصم <span class="req">*</span></label><input type="text" id="ropp" required placeholder="اسم خصمك"></div></div>
+        <div class="form-row"><div class="form-group"><label>التوقيت الحالي <span class="req">*</span></label><input type="datetime-local" id="rcur" required></div><div class="form-group"><label>التوقيت الجديد <span class="req">*</span></label><input type="datetime-local" id="rnew" required></div></div>
+        <div class="form-group"><label>سبب التغيير</label><input type="text" id="rreason" placeholder="ظروف طارئة..."></div>
+        <div class="form-group"><label>واتساب <span class="req">*</span></label><input type="tel" id="rwa" required placeholder="07XX-XXX-XXXX"></div>
+        <div class="pay-box" id="rescPay">
+          <div class="pay-tabs"><button class="pay-tab active" data-tab="rpiq">🇮🇶 العراق</button><button class="pay-tab" data-tab="rpintl">🌍 دولي</button></div>
+          <div id="rpiq" class="pay-content active"><div class="pay-method" data-method="asia"><div class="pay-method-ico">📱</div><div class="pay-method-info"><h4>آسيا سيل</h4></div></div><div class="pay-method" data-method="zain"><div class="pay-method-ico">💚</div><div class="pay-method-info"><h4>زين كاش</h4></div></div></div>
+          <div id="rpintl" class="pay-content"><div class="pay-method" data-method="google"><div class="pay-method-ico">🎁</div><div class="pay-method-info"><h4>Google Play</h4></div></div><div class="pay-method" data-method="apple"><div class="pay-method-ico">🍎</div><div class="pay-method-info"><h4>Apple Gift</h4></div></div></div>
+          <div class="form-group mt-12"><label>إيصال / كود <span class="req">*</span></label><input type="text" id="rpcode" required placeholder="أدخل هنا"></div>
+          <div class="order-sum"><div class="o-row"><span>تغيير توقيت مباراة</span><span style="color:var(--gold)">1,000 IQD</span></div><div class="o-row o-total"><strong>الإجمالي</strong><strong style="color:var(--gold)">1,000 IQD</strong></div></div>
+        </div>
+        <button class="btn btn-primary btn-full btn-lg mt-16" onclick="submitResc()"><i class="fas fa-calendar-check"></i> إرسال طلب التغيير</button>
+      </div>
+    </div>
+  </div>
+</div></section>
+<footer><h4>تابع مجتمع ArenoX الرسمي</h4>
+<div class="social-row">
+  <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
+  <a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://t.me/arenox7" class="social-btn" target="_blank"><i class="fab fa-telegram"></i></a>
+  <a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank"><i class="fab fa-youtube"></i></a>
+</div><p class="powered">Powered by GeekX Engine</p></footer>
+<script src="../js/core.js"></script>
+<script>
+function switchTab2(t){
+  ['derby','reschedule'].forEach(id=>{document.getElementById('tab-'+id).style.display=id===t?'block':'none';document.getElementById('btn-tab-'+id).classList.toggle('active',id===t);});
+}
+function initPay(id){
+  const box=document.getElementById(id);
+  $$('.pay-tab',box).forEach(t=>t.addEventListener('click',()=>{$$('.pay-tab,.pay-content',box).forEach(e=>e.classList.remove('active'));t.classList.add('active');const c=box.querySelector('#'+t.dataset.tab);if(c)c.classList.add('active');}));
+  $$('.pay-method',box).forEach(c=>c.addEventListener('click',()=>{$$('.pay-method',c.closest('.pay-content')).forEach(x=>x.classList.remove('sel'));c.classList.add('sel');}));
+}
+async function submitDerby(){
+  const vals={p1:document.getElementById('dp1').value.trim(),p2:document.getElementById('dp2').value.trim(),game:document.getElementById('dGame').value,date:document.getElementById('dDate').value,wa:document.getElementById('dWA').value.trim(),code:document.getElementById('dPayCode').value.trim()};
+  if(!vals.p1||!vals.p2||!vals.game||!vals.date||!vals.wa){toast('يرجى تعبئة جميع الحقول','warning');return;}
+  if(!vals.code){toast('أدخل إيصال الدفع','warning');return;}
+  const r=await sendToServices({service:'derby',player1:vals.p1,player2:vals.p2,game:vals.game,matchDate:vals.date,whatsapp:vals.wa,payCode:vals.code});
+  if(r.success)showSuccess(document.getElementById('derbyArea'),r.orderId);
+  else toast('خطأ، تواصل واتساب','error');
+}
+async function submitResc(){
+  const vals={p:document.getElementById('rp').value.trim(),opp:document.getElementById('ropp').value.trim(),cur:document.getElementById('rcur').value,nw:document.getElementById('rnew').value,wa:document.getElementById('rwa').value.trim(),code:document.getElementById('rpcode').value.trim()};
+  if(!vals.p||!vals.opp||!vals.cur||!vals.nw||!vals.wa){toast('يرجى تعبئة جميع الحقول','warning');return;}
+  if(!vals.code){toast('أدخل إيصال الدفع','warning');return;}
+  const r=await sendToServices({service:'reschedule',playerName:vals.p,opponent:vals.opp,currentDate:vals.cur,newDate:vals.nw,whatsapp:vals.wa,payCode:vals.code});
+  if(r.success)showSuccess(document.getElementById('rescArea'),r.orderId);
+  else toast('خطأ، تواصل واتساب','error');
+}
+document.addEventListener('DOMContentLoaded',()=>{initPay('derbyPay');initPay('rescPay');});
+</script></body></html>

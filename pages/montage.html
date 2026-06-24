@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مونتاج اللقطات — ArenoX</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../image/ArenoX-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="img-background"><img src="../image/stadium-glow.jpg" alt="ArenoX"></div>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="../image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'"><span class="logo-text">ArenoX</span></a>
+    <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links">
+      <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="tournaments.html"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="paid-tournaments.html"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="custom-tournament.html"><i class="fas fa-crown"></i> بطولتك</a>
+      <a href="montage.html" class="active"><i class="fas fa-film"></i> مونتاج</a>
+      <a href="poster.html"><i class="fas fa-palette"></i> بوسترات</a>
+      <a href="certificates.html"><i class="fas fa-certificate"></i> شهادات</a>
+      <a href="accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+  </div>
+</nav>
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge"><i class="fas fa-film"></i> خدمة المونتاج الاحترافي</div>
+  <h1>حوّل لقطتك<br><span class="line2 grad-purple">إلى محتوى أسطوري</span></h1>
+  <p>أرسل مقطعك الخام — نُعيد إنتاجه بمونتاج سينمائي احترافي جاهز لتيك توك وريلز في 24 ساعة.</p>
+</section>
+<section class="section">
+  <div class="container two-col" style="display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:start">
+    <div id="formArea">
+      <div class="form-card">
+        <div class="form-sec-title"><i class="fas fa-clipboard-list"></i> تفاصيل الطلب</div>
+        <div class="form-group"><label>اسمك / اسم المستخدم <span class="req">*</span></label><input type="text" id="mName" placeholder="اسمك في اللعبة" required></div>
+        <div class="form-group"><label>رابط المقطع الخام <span class="req">*</span></label><input type="url" id="mLink" placeholder="Google Drive / YouTube / TikTok..." required><small>ارفع المقطع على Google Drive أو أي منصة وأرسل الرابط</small></div>
+        <div class="form-row">
+          <div class="form-group"><label>نوع المحتوى <span class="req">*</span></label><select id="mType" required><option value="">اختر...</option><option>هدف مقصية</option><option>مراوغة نارية</option><option>تصدية حارس</option><option>ملخص مباراة</option><option>أهداف متعددة</option><option>أخرى</option></select></div>
+          <div class="form-group"><label>نمط المونتاج <span class="req">*</span></label><select id="mStyle" required><option value="">اختر...</option><option>نار وحماس (تيك توك)</option><option>سينمائي (يوتيوب)</option><option>بطيء دراماتيكي</option><option>اتركه لكم</option></select></div>
+        </div>
+        <div class="form-group"><label>رابط اللوغو / الشعار (اختياري)</label><input type="url" id="mLogo" placeholder="رابط صورة اللوغو..."><small>ارفعه على Imgur أو Drive وأرسل الرابط</small></div>
+        <div class="form-group"><label>واتساب للتواصل <span class="req">*</span></label><input type="tel" id="mWA" placeholder="07XX-XXX-XXXX" required></div>
+        <div class="form-group"><label>ملاحظات إضافية</label><textarea id="mNotes" placeholder="أي تفاصيل خاصة..." style="min-height:80px"></textarea></div>
+        <div class="form-sec-title"><i class="fas fa-credit-card"></i> الدفع</div>
+        <div class="pay-box" id="payBox">
+          <div class="pay-tabs"><button class="pay-tab active" data-tab="piq">🇮🇶 العراق</button><button class="pay-tab" data-tab="pintl">🌍 دولي</button></div>
+          <div id="piq" class="pay-content active">
+            <div class="pay-method" data-method="asia"><div class="pay-method-ico">📱</div><div class="pay-method-info"><h4>آسيا سيل</h4><p>تحويل فوري</p></div></div>
+            <div class="pay-detail" data-detail="asia"><p style="font-size:var(--fs-sm);color:var(--muted)">أرسل إلى: <strong style="color:var(--gold)" id="asiaNum">07XX</strong></p></div>
+            <div class="pay-method" data-method="zain"><div class="pay-method-ico">💚</div><div class="pay-method-info"><h4>زين كاش</h4><p>تحويل فوري</p></div></div>
+            <div class="pay-detail" data-detail="zain"><p style="font-size:var(--fs-sm);color:var(--muted)">أرسل إلى: <strong style="color:var(--gold)" id="zainNum">07XX</strong></p></div>
+          </div>
+          <div id="pintl" class="pay-content">
+            <div class="pay-method" data-method="google"><div class="pay-method-ico">🎁</div><div class="pay-method-info"><h4>Google Play Gift Card</h4><p>أرسل كود البطاقة</p></div></div>
+            <div class="pay-method" data-method="apple"><div class="pay-method-ico">🍎</div><div class="pay-method-info"><h4>Apple Gift Card</h4><p>أرسل كود البطاقة</p></div></div>
+          </div>
+          <div class="form-group" style="margin-top:16px"><label>رقم الإيصال / كود البطاقة <span class="req">*</span></label><input type="text" id="mPayCode" placeholder="أدخل بعد الدفع" required></div>
+          <div class="order-sum"><h4><i class="fas fa-receipt"></i> ملخص</h4><div class="o-row"><span>مونتاج مقطع واحد</span><span style="color:var(--gold)">2,500 IQD</span></div><div class="o-row o-total"><strong>الإجمالي</strong><strong style="color:var(--gold)">2,500 IQD</strong></div></div>
+        </div>
+        <button class="btn btn-primary btn-full btn-lg mt-16" id="mBtn" onclick="submitMontage()"><i class="fas fa-paper-plane"></i> إرسال الطلب</button>
+      </div>
+      <div id="notifBox" style="margin-top:12px"></div>
+    </div>
+    <div>
+      <div class="card mb-24">
+        <h3 style="font-size:var(--fs-md);font-weight:900;margin-bottom:18px"><i class="fas fa-star" style="color:var(--violet)"></i> ماذا يتضمن المونتاج؟</h3>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div class="flex" style="gap:10px"><span style="color:var(--green)">✅</span><span style="font-size:var(--fs-sm)">تحرير ألوان وإضاءة احترافية</span></div>
+          <div class="flex" style="gap:10px"><span style="color:var(--green)">✅</span><span style="font-size:var(--fs-sm)">انتقالات سينمائية (Cuts, Zooms, Slow-Mo)</span></div>
+          <div class="flex" style="gap:10px"><span style="color:var(--green)">✅</span><span style="font-size:var(--fs-sm)">موسيقى خلفية حماسية</span></div>
+          <div class="flex" style="gap:10px"><span style="color:var(--green)">✅</span><span style="font-size:var(--fs-sm)">مؤثرات صوتية (ابتهاج جماهير، صافرة)</span></div>
+          <div class="flex" style="gap:10px"><span style="color:var(--green)">✅</span><span style="font-size:var(--fs-sm)">شعارك في المقدمة والنهاية</span></div>
+          <div class="flex" style="gap:10px"><span style="color:var(--green)">✅</span><span style="font-size:var(--fs-sm)">تسليم MP4 بجودة 1080p</span></div>
+          <div class="flex" style="gap:10px"><span style="color:var(--green)">✅</span><span style="font-size:var(--fs-sm)">إصدار 9:16 لتيك توك و 1:1 لإنستغرام</span></div>
+          <div class="flex" style="gap:10px"><span style="color:var(--green)">✅</span><span style="font-size:var(--fs-sm)">مراجعة واحدة مجانية</span></div>
+        </div>
+      </div>
+      <div class="card mb-24" style="border-color:rgba(188,0,255,0.35)">
+        <h4 style="font-size:var(--fs-md);font-weight:900;margin-bottom:14px">⚡ باقات موفّرة</h4>
+        <div class="o-row mb-16"><span class="badge badge-purple">3 مقاطع</span><span style="color:var(--gold);font-weight:800">6,000 IQD</span></div>
+        <div class="o-row"><span class="badge badge-cyan">5 مقاطع</span><span style="color:var(--gold);font-weight:800">9,000 IQD</span></div>
+        <p style="font-size:var(--fs-xs);color:var(--muted);margin-top:12px">اذكر في الملاحظات إن كنت تريد الباقة</p>
+      </div>
+      <div class="alert alert-info"><i class="fas fa-clock" style="flex-shrink:0;font-size:1.1rem"></i><div><strong>وقت التسليم:</strong> 24 ساعة للمقطع الواحد، 48 ساعة للباقات.</div></div>
+    </div>
+  </div>
+</section>
+<style>@media(max-width:900px){.two-col{grid-template-columns:1fr !important;}}</style>
+<footer><h4>تابع مجتمع ArenoX الرسمي</h4><div class="social-row"><a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i></a><a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://t.me/arenox7" class="social-btn" target="_blank"><i class="fab fa-telegram"></i></a><a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank"><i class="fab fa-youtube"></i></a></div><p class="powered">Powered by GeekX Engine</p></footer>
+<script src="../js/core.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const box=document.getElementById('payBox');
+  $$('.pay-tab',box).forEach(t=>t.addEventListener('click',()=>{$$('.pay-tab,.pay-content',box).forEach(e=>e.classList.remove('active','open'));t.classList.add('active');const c=box.querySelector('#'+t.dataset.tab);if(c)c.classList.add('active');}));
+  $$('.pay-method',box).forEach(c=>c.addEventListener('click',()=>{$$('.pay-method',c.closest('.pay-content')).forEach(x=>x.classList.remove('sel'));c.classList.add('sel');$$('.pay-detail',c.closest('.pay-content')).forEach(d=>d.classList.remove('open'));const d=c.closest('.pay-content').querySelector(`[data-detail="${c.dataset.method}"]`);if(d)d.classList.add('open');}));
+  document.getElementById('asiaNum').textContent=ARENOX.ASIA_NUM;
+  document.getElementById('zainNum').textContent=ARENOX.ZAIN_NUM;
+});
+async function submitMontage(){
+  const data={service:'montage',playerName:document.getElementById('mName').value.trim(),clipLink:document.getElementById('mLink').value.trim(),clipType:document.getElementById('mType').value,style:document.getElementById('mStyle').value,logoUrl:document.getElementById('mLogo').value.trim(),whatsapp:document.getElementById('mWA').value.trim(),notes:document.getElementById('mNotes').value,payCode:document.getElementById('mPayCode').value.trim()};
+  if(!data.playerName||!data.clipLink||!data.clipType||!data.style||!data.whatsapp){toast('يرجى تعبئة الحقول المطلوبة','warning');return;}
+  if(!data.payCode){toast('أدخل رقم الإيصال أو كود البطاقة','warning');return;}
+  const btn=document.getElementById('mBtn');setLoading(btn,true);
+  const r=await sendToServices(data);setLoading(btn,false);
+  if(r.success)showSuccess(document.getElementById('formArea'),r.orderId);
+  else showNotif('خطأ في الإرسال، تواصل واتساب مباشرةً','error');
+}
+</script>
+</body>
+</html>

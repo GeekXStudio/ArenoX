@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الخدمات والدفع — ArenoX</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../image/ArenoX-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="img-background"><img src="../image/stadium-glow.jpg" alt="ArenoX"></div><nav class="navbar"><div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="../image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'"><span class="logo-text">ArenoX</span></a>
+    <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links">
+      <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="tournaments.html"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="paid-tournaments.html"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="custom-tournament.html"><i class="fas fa-crown"></i> بطولتك</a>
+      <a href="montage.html"><i class="fas fa-film"></i> مونتاج</a>
+      <a href="poster.html"><i class="fas fa-palette"></i> بوسترات</a>
+      <a href="certificates.html"><i class="fas fa-certificate"></i> شهادات</a>
+      <a href="accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+</div></nav>
+<section class="hero"><div class="hero-glow"></div>
+  <div class="hero-badge"><i class="fas fa-star"></i> مركز الخدمات والدفع</div>
+  <h1>اطلب خدمتك<br><span class="line2 grad-purple">بخطوات بسيطة</span></h1>
+  <p>اختر الخدمة وطريقة الدفع المناسبة — العراق أو دولي — وأنهِ طلبك في دقائق.</p>
+</section>
+<section class="section"><div class="container-sm">
+  <div class="step-bar"><div class="step-ind active" id="si1">① اختر الخدمة</div><div class="step-ind" id="si2">② التفاصيل</div><div class="step-ind" id="si3">③ الدفع</div><div class="step-ind" id="si4">④ تأكيد</div></div>
+  <div id="ps1" class="pay-step show">
+    <h2 style="font-size:var(--fs-xl);font-weight:900;margin-bottom:24px">🎯 اختر الخدمة</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:12px;margin-bottom:24px" id="svcGrid">
+      <div class="svc-pick" onclick="pickSvc(this,'montage','مونتاج مقطع','2,500 IQD',2500)"><div style="font-size:1.8rem;margin-bottom:9px">🎬</div><div style="font-weight:800;font-size:var(--fs-sm);margin-bottom:5px">مونتاج مقطع</div><div style="font-family:Orbitron,sans-serif;font-size:.85rem;color:var(--gold)">2,500 IQD</div></div>
+      <div class="svc-pick" onclick="pickSvc(this,'derby','مباراة تحدي خاصة','5,000 IQD',5000)"><div style="font-size:1.8rem;margin-bottom:9px">⚔️</div><div style="font-weight:800;font-size:var(--fs-sm);margin-bottom:5px">مباراة تحدي</div><div style="font-family:Orbitron,sans-serif;font-size:.85rem;color:var(--gold)">5,000 IQD</div></div>
+      <div class="svc-pick" onclick="pickSvc(this,'reschedule','تغيير توقيت','1,000 IQD',1000)"><div style="font-size:1.8rem;margin-bottom:9px">📅</div><div style="font-weight:800;font-size:var(--fs-sm);margin-bottom:5px">تغيير التوقيت</div><div style="font-family:Orbitron,sans-serif;font-size:.85rem;color:var(--gold)">1,000 IQD</div></div>
+      <div class="svc-pick" onclick="pickSvc(this,'certificate','شهادة إنجاز','1,500 IQD',1500)"><div style="font-size:1.8rem;margin-bottom:9px">🏆</div><div style="font-weight:800;font-size:var(--fs-sm);margin-bottom:5px">شهادة إنجاز</div><div style="font-family:Orbitron,sans-serif;font-size:.85rem;color:var(--gold)">1,500 IQD</div></div>
+      <div class="svc-pick" onclick="pickSvc(this,'thumbnail','Thumbnail','1,000 IQD',1000)"><div style="font-size:1.8rem;margin-bottom:9px">🖼️</div><div style="font-weight:800;font-size:var(--fs-sm);margin-bottom:5px">Thumbnail</div><div style="font-family:Orbitron,sans-serif;font-size:.85rem;color:var(--gold)">1,000 IQD</div></div>
+      <div class="svc-pick" onclick="pickSvc(this,'mediation','وساطة حساب','5%','')"><div style="font-size:1.8rem;margin-bottom:9px">🛡️</div><div style="font-weight:800;font-size:var(--fs-sm);margin-bottom:5px">وساطة حساب</div><div style="font-family:Orbitron,sans-serif;font-size:.85rem;color:var(--gold)">5% عمولة</div></div>
+      <div class="svc-pick" onclick="pickSvc(this,'montage3','باقة 3 مقاطع','6,000 IQD',6000)"><div style="font-size:1.8rem;margin-bottom:9px">🎬✨</div><div style="font-weight:800;font-size:var(--fs-sm);margin-bottom:5px">باقة 3 مقاطع</div><div style="font-family:Orbitron,sans-serif;font-size:.85rem;color:var(--gold)">6,000 IQD</div></div>
+      <div class="svc-pick" onclick="pickSvc(this,'montage5','باقة 5 مقاطع','9,000 IQD',9000)"><div style="font-size:1.8rem;margin-bottom:9px">🎬🔥</div><div style="font-weight:800;font-size:var(--fs-sm);margin-bottom:5px">باقة 5 مقاطع</div><div style="font-family:Orbitron,sans-serif;font-size:.85rem;color:var(--gold)">9,000 IQD</div></div>
+    </div>
+    <button class="btn btn-primary btn-full btn-lg" id="s1Btn" disabled onclick="goStep(2)">التالي <i class="fas fa-arrow-left"></i></button>
+  </div>
+  <div id="ps2" class="pay-step"><div class="flex-between mb-20"><h2 style="font-size:var(--fs-xl);font-weight:900">📋 التفاصيل</h2><span class="badge badge-purple" id="s2Name">—</span></div><div id="s2Fields"></div><div class="flex" style="gap:12px;margin-top:16px"><button class="btn btn-ghost" onclick="goStep(1)"><i class="fas fa-arrow-right"></i> السابق</button><button class="btn btn-primary" style="flex:1" onclick="goStep(3)">التالي <i class="fas fa-arrow-left"></i></button></div></div>
+  <div id="ps3" class="pay-step">
+    <h2 style="font-size:var(--fs-xl);font-weight:900;margin-bottom:20px">💳 الدفع</h2>
+    <div class="order-sum mb-20"><h4><i class="fas fa-receipt"></i> ملخص</h4><div class="o-row"><span id="s3Svc">—</span><span style="color:var(--gold)" id="s3Price">—</span></div><div class="o-row o-total"><strong>الإجمالي</strong><strong style="color:var(--gold)" id="s3Total">—</strong></div></div>
+    <h3 style="font-size:var(--fs-base);color:var(--muted);margin-bottom:14px">🇮🇶 طرق الدفع العراقية</h3>
+    <div class="pay-method" onclick="pickPay(this,'asia')" data-method="asia" style="margin-bottom:8px"><div class="pay-method-ico">📱</div><div class="pay-method-info"><h4>آسيا سيل</h4><p>تحويل رصيد فوري</p></div><div class="pay-num" id="pAsia">07XX-XXX-XXXX</div></div>
+    <div id="dAsia" class="pay-detail"><p style="font-size:var(--fs-sm);color:var(--muted)">افتح تطبيق آسيا سيل → تحويل → الرقم أعلاه → المبلغ → احتفظ بالإيصال.</p></div>
+    <div class="pay-method" onclick="pickPay(this,'zain')" data-method="zain" style="margin-bottom:8px"><div class="pay-method-ico">💚</div><div class="pay-method-info"><h4>زين كاش</h4><p>تحويل فوري</p></div><div class="pay-num" id="pZain">07XX-XXX-XXXX</div></div>
+    <div id="dZain" class="pay-detail"><p style="font-size:var(--fs-sm);color:var(--muted)">افتح تطبيق زين كاش → تحويل الأموال → الرقم أعلاه → المبلغ → احتفظ بالإيصال.</p></div>
+    <div style="text-align:center;margin:20px 0;font-size:var(--fs-sm);color:var(--muted)">— أو دفع دولي —</div>
+    <h3 style="font-size:var(--fs-base);color:var(--muted);margin-bottom:14px">🌍 طرق الدفع الدولية</h3>
+    <div class="pay-method" onclick="pickPay(this,'google')" data-method="google" style="margin-bottom:8px"><div class="pay-method-ico">🎁</div><div class="pay-method-info"><h4>Google Play Gift Card</h4><p>اشترِ بطاقة وأرسل الكود</p></div><span class="badge badge-green">دولي</span></div>
+    <div class="pay-method" onclick="pickPay(this,'apple')" data-method="apple"><div class="pay-method-ico">🍎</div><div class="pay-method-info"><h4>Apple Gift Card</h4><p>اشترِ بطاقة وأرسل الكود</p></div><span class="badge badge-cyan">دولي</span></div>
+    <div class="form-group mt-20"><label>رقم الإيصال / كود البطاقة <span class="req">*</span></label><input type="text" id="pCode" placeholder="أدخل هنا"></div>
+    <div class="form-group"><label>ملاحظات</label><textarea id="pNotes" style="min-height:70px" placeholder="أي تفاصيل..."></textarea></div>
+    <div class="flex" style="gap:12px;margin-top:16px"><button class="btn btn-ghost" onclick="goStep(2)"><i class="fas fa-arrow-right"></i> السابق</button><button class="btn btn-gold btn-lg" style="flex:1" id="s3Btn" onclick="confirmOrder()"><i class="fas fa-check-circle"></i> تأكيد الطلب</button></div>
+  </div>
+  <div id="ps4" class="pay-step"><div class="success-state"><div class="success-icon">🎉</div><h3 style="color:var(--green)">تم استلام طلبك!</h3><p>سيتواصل معك فريق ArenoX خلال 24 ساعة.</p><div class="order-id-tag" id="finalId">—</div><div id="finalSum" style="max-width:400px;margin:20px auto;text-align:right;background:var(--card);border:1px solid var(--border);border-radius:var(--r-md);padding:20px"></div><div class="flex mt-24" style="justify-content:center;flex-wrap:wrap;gap:12px"><a id="waLink" href="#" target="_blank" class="btn btn-success"><i class="fab fa-whatsapp"></i> متابعة واتساب</a><a href="https://t.me/arenox7" target="_blank" class="btn btn-outline"><i class="fab fa-telegram"></i> تيليجرام</a><a href="../index.html" class="btn btn-ghost"><i class="fas fa-home"></i> الرئيسية</a></div></div></div>
+</div></section>
+<style>
+.pay-step{display:none;animation:fadeIn .35s ease;}
+.pay-step.show{display:block;}
+.svc-pick{background:var(--card);border:2px solid var(--border);border-radius:var(--r-md);padding:18px 14px;cursor:pointer;transition:var(--t);text-align:center;}
+.svc-pick:hover{border-color:rgba(188,0,255,0.5);}
+.svc-pick.sel{border-color:var(--violet);background:rgba(188,0,255,0.1);}
+</style>
+<footer><h4>تابع مجتمع ArenoX الرسمي</h4>
+<div class="social-row">
+  <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
+  <a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://t.me/arenox7" class="social-btn" target="_blank"><i class="fab fa-telegram"></i></a>
+  <a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank"><i class="fab fa-youtube"></i></a>
+</div><p class="powered">Powered by GeekX Engine</p></footer>
+<script src="../js/core.js"></script>
+<script>
+const SVC_FIELDS={
+  montage:[{n:'playerName',l:'اسمك',t:'text',r:1},{n:'clipLink',l:'رابط المقطع',t:'url',r:1},{n:'clipType',l:'نوع المحتوى',t:'select',opts:['هدف مقصية','مراوغة','تصدية حارس','ملخص','أخرى'],r:1},{n:'whatsapp',l:'واتساب',t:'tel',r:1},{n:'notes',l:'ملاحظات',t:'textarea',r:0}],
+  derby:[{n:'player1',l:'اسمك',t:'text',r:1},{n:'player2',l:'اسم الخصم',t:'text',r:1},{n:'game',l:'اللعبة',t:'select',opts:['eFootball','EA FC','أخرى'],r:1},{n:'matchDate',l:'تاريخ المباراة',t:'datetime-local',r:1},{n:'whatsapp',l:'واتساب',t:'tel',r:1}],
+  reschedule:[{n:'playerName',l:'اسمك',t:'text',r:1},{n:'opponent',l:'اسم الخصم',t:'text',r:1},{n:'currentDate',l:'التوقيت الحالي',t:'datetime-local',r:1},{n:'newDate',l:'التوقيت الجديد',t:'datetime-local',r:1},{n:'whatsapp',l:'واتساب',t:'tel',r:1}],
+  certificate:[{n:'winnerName',l:'اسمك في الشهادة',t:'text',r:1},{n:'tourney',l:'اسم البطولة',t:'text',r:1},{n:'rank',l:'الإنجاز',t:'select',opts:['بطل البطولة','وصيف','أفضل هداف','أفضل لاعب'],r:1},{n:'proofLink',l:'رابط إثبات الفوز',t:'url',r:1},{n:'whatsapp',l:'واتساب',t:'tel',r:1}],
+  thumbnail:[{n:'playerName',l:'اسمك',t:'text',r:1},{n:'details',l:'التفاصيل',t:'textarea',r:1},{n:'whatsapp',l:'واتساب',t:'tel',r:1}],
+  mediation:[{n:'buyerName',l:'اسمك',t:'text',r:1},{n:'listingDesc',l:'وصف الحساب',t:'textarea',r:1},{n:'agreedPrice',l:'السعر (IQD)',t:'number',r:1},{n:'whatsapp',l:'واتساب',t:'tel',r:1}],
+  montage3:[{n:'playerName',l:'اسمك',t:'text',r:1},{n:'clips',l:'روابط المقاطع الثلاثة',t:'textarea',r:1},{n:'whatsapp',l:'واتساب',t:'tel',r:1}],
+  montage5:[{n:'playerName',l:'اسمك',t:'text',r:1},{n:'clips',l:'روابط المقاطع الخمسة',t:'textarea',r:1},{n:'whatsapp',l:'واتساب',t:'tel',r:1}],
+};
+const ORDER={svc:'',name:'',price:'',method:'',details:{}};
+function pickSvc(el,svc,name,price){
+  $$('.svc-pick').forEach(e=>e.classList.remove('sel'));el.classList.add('sel');
+  Object.assign(ORDER,{svc,name,price});
+  document.getElementById('s1Btn').disabled=false;
+}
+function goStep(n){
+  if(n===3){
+    let ok=true;
+    $$('#s2Fields [required]').forEach(f=>{if(!f.value.trim()){f.style.borderColor='var(--red)';ok=false;}else f.style.borderColor='';});
+    if(!ok){toast('يرجى تعبئة جميع الحقول','warning');return;}
+    $$('#s2Fields input,#s2Fields select,#s2Fields textarea').forEach(f=>{if(f.name)ORDER.details[f.name]=f.value;});
+    document.getElementById('s3Svc').textContent=ORDER.name;
+    document.getElementById('s3Price').textContent=ORDER.price;
+    document.getElementById('s3Total').textContent=ORDER.price;
+  }
+  $$('.pay-step').forEach(s=>s.classList.remove('show'));
+  document.getElementById('ps'+n).classList.add('show');
+  for(let i=1;i<=4;i++){const si=document.getElementById('si'+i);si.classList.remove('active','done');if(i===n)si.classList.add('active');else if(i<n)si.classList.add('done');}
+  if(n===2)buildFields();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function buildFields(){
+  document.getElementById('s2Name').textContent=ORDER.name;
+  document.getElementById('s2Fields').innerHTML=(SVC_FIELDS[ORDER.svc]||[]).map(f=>`
+    <div class="form-group">
+      <label>${f.r?'<span style="color:var(--violet)">*</span> ':''}${f.l}</label>
+      ${f.t==='select'?`<select name="${f.n}" ${f.r?'required':''}><option value="">اختر...</option>${(f.opts||[]).map(o=>'<option>'+o+'</option>').join('')}</select>`:f.t==='textarea'?`<textarea name="${f.n}" ${f.r?'required':''}></textarea>`:`<input type="${f.t}" name="${f.n}" ${f.r?'required':''} placeholder="${f.l}">`}
+    </div>`).join('');
+}
+let selMethod='';
+function pickPay(el,m){
+  $$('.pay-method').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');selMethod=m;
+  ['dAsia','dZain'].forEach(id=>{const d=document.getElementById(id);if(d)d.classList.remove('open');});
+  const det=document.getElementById('d'+m.charAt(0).toUpperCase()+m.slice(1));
+  if(det)det.classList.add('open');
+}
+async function confirmOrder(){
+  if(!selMethod){toast('اختر طريقة الدفع','warning');return;}
+  const code=document.getElementById('pCode').value.trim();
+  if(!code){toast('أدخل رقم الإيصال أو الكود','warning');return;}
+  const btn=document.getElementById('s3Btn');setLoading(btn,true);
+  const orderId=genId();
+  const r=await sendToServices({...ORDER,...ORDER.details,service:ORDER.svc,paymentMethod:selMethod,payCode:code,notes:document.getElementById('pNotes').value,orderId});
+  setLoading(btn,false);
+  const oid=r.orderId||orderId;
+  goStep(4);
+  document.getElementById('finalId').textContent='رقم الطلب: '+oid;
+  document.getElementById('finalSum').innerHTML=`<div class="o-row"><span>الخدمة</span><span style="color:var(--gold)">${ORDER.name}</span></div><div class="o-row"><span>المبلغ</span><span style="color:var(--gold)">${ORDER.price}</span></div><div class="o-row"><span>الدفع</span><span>${selMethod}</span></div><div class="o-row"><span>الوقت</span><span style="color:var(--muted);font-size:var(--fs-xs)">${fmtDate()}</span></div>`;
+  document.getElementById('waLink').href=`https://wa.me/${ARENOX.WHATSAPP}?text=طلبي+${oid}`;
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('pAsia').textContent=ARENOX.ASIA_NUM;
+  document.getElementById('pZain').textContent=ARENOX.ZAIN_NUM;
+});
+</script></body></html>

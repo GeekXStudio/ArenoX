@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شجرة البطولة — ArenoX</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../image/ArenoX-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="img-background"><img src="../image/stadium-glow.jpg" alt="ArenoX"></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'">
+      <span class="logo-text">ArenoX</span>
+    </a>
+    <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links">
+      <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="tournaments.html"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="paid-tournaments.html"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="custom-tournament.html"><i class="fas fa-plus"></i> أنشئ بطولتك</a>
+      <a href="montage.html"><i class="fas fa-film"></i> مونتاج</a>
+      <a href="poster.html"><i class="fas fa-palette"></i> بوسترات</a>
+      <a href="certificates.html"><i class="fas fa-certificate"></i> شهادات</a>
+      <a href="accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow" style="background:radial-gradient(circle,rgba(240,180,41,0.15),transparent 70%)"></div>
+  <div class="hero-badge" style="background:rgba(240,180,41,0.12);border-color:rgba(240,180,41,0.4);color:var(--gold)">
+    <i class="fas fa-crown"></i> بطولة خاصة منشورة رسمياً
+  </div>
+  <h1 id="tName">جاري التحميل...<br><span class="line2 grad-gold" id="tGameLine">&nbsp;</span></h1>
+  <p id="tDesc">برعاية وإشراف رسمي من فريق ArenoX.</p>
+</section>
+
+<section class="section" id="dashboard">
+  <div class="container">
+    <div class="dashboard">
+      <h2 class="dashboard-title">
+        <i class="fas fa-sitemap"></i> شجرة <span class="grad-gold">المباريات</span>
+      </h2>
+      <div class="bracket-wrap" id="bracketDisplay">
+        <div style="text-align:center;padding:44px;width:100%">
+          <span class="spinner" style="width:36px;height:36px;border-width:3.5px"></span>
+          <p style="margin-top:16px;color:var(--muted);font-size:var(--fs-base)">جاري تحميل الشجرة...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h4>تابع مجتمع ArenoX الرسمي</h4>
+  <div class="social-row">
+    <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://t.me/arenox7" class="social-btn" target="_blank"><i class="fab fa-telegram"></i></a>
+    <a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p class="powered">Powered by GeekX Engine</p>
+</footer>
+
+<script src="../js/core.js"></script>
+<script>
+function getOrderIdFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id') || params.get('orderId') || '';
+}
+
+function renderRounds(rounds, display) {
+  display.innerHTML = '';
+  const inner = document.createElement('div');
+  inner.className = 'bracket-inner';
+
+  rounds.forEach((round, idx) => {
+    const col = document.createElement('div');
+    col.className = 'b-round';
+    col.innerHTML = `<div class="b-round-title">${round.roundName || `الدور ${idx+1}`}</div>`;
+    round.matches.forEach(m => {
+      const statusCls = m.status==='منتهية'?'status-done':m.status==='جارية'||m.status==='جارية الآن'?'status-live':'status-pending';
+      const p1w = m.winner && m.winner===m.player1;
+      const p2w = m.winner && m.winner===m.player2;
+      col.innerHTML += `
+        <div class="b-match">
+          <div class="b-match-head">
+            <span class="b-match-id">#${m.matchId||'—'}</span>
+            <span class="badge ${statusCls}">${m.status||'قادمة'}</span>
+          </div>
+          ${m.date?`<div class="b-match-date"><i class="fas fa-calendar-alt" style="color:var(--cyan);margin-left:5px"></i>${m.date}</div>`:''}
+          <div class="b-player ${p1w?'winner':''}">
+            <span>👤 ${m.player1||'بانتظار المتأهل'}</span>
+            ${p1w?'<span title="الفائز">👑</span>':''}
+          </div>
+          <div class="b-vs">— VS —</div>
+          <div class="b-player ${p2w?'winner':''}">
+            <span>👤 ${m.player2||'بانتظار المتأهل'}</span>
+            ${p2w?'<span title="الفائز">👑</span>':''}
+          </div>
+        </div>`;
+    });
+    inner.appendChild(col);
+  });
+  display.appendChild(inner);
+}
+
+async function loadCustomBracket() {
+  const orderId = getOrderIdFromUrl();
+  const display  = document.getElementById('bracketDisplay');
+
+  if (!orderId) {
+    display.innerHTML = `<p style="text-align:center;color:var(--red);padding:36px;width:100%"><i class="fas fa-exclamation-triangle"></i> رابط غير صالح — رقم البطولة مفقود.</p>`;
+    return;
+  }
+
+  try {
+    const res  = await fetch(ARENOX.SCRIPT_URL + '?get=custombracket&id=' + encodeURIComponent(orderId));
+    const data = await res.json();
+
+    if (!data || !data.found) {
+      document.getElementById('tName').innerHTML = 'البطولة غير موجودة';
+      display.innerHTML = `<p style="text-align:center;color:var(--red);padding:36px;width:100%"><i class="fas fa-exclamation-triangle"></i> لم يتم العثور على هذه البطولة.</p>`;
+      return;
+    }
+
+    if (!data.published) {
+      document.getElementById('tName').innerHTML = data.tournamentName || 'بطولة قيد التحضير';
+      document.getElementById('tGameLine').textContent = '';
+      document.getElementById('tDesc').textContent = 'لم تُنشر شجرة هذه البطولة بعد — تابع صفحة "تتبع طلبي" لمعرفة آخر التحديثات.';
+      display.innerHTML = `
+        <div style="text-align:center;padding:52px 20px;width:100%">
+          <div style="font-size:4rem;margin-bottom:18px">🏟️</div>
+          <h3 style="color:var(--muted);font-weight:700;margin-bottom:8px">الشجرة غير منشورة بعد</h3>
+          <p style="color:var(--muted);font-size:.95rem">سيتم نشرها فور تأكيد الدفع من فريق ArenoX.</p>
+          <a href="track-order.html?id=${encodeURIComponent(orderId)}" class="btn btn-outline mt-16"><i class="fas fa-receipt"></i> تتبع حالة الطلب</a>
+        </div>`;
+      return;
+    }
+
+    document.getElementById('tName').innerHTML = `${data.tournamentName}<br><span class="line2 grad-gold" id="tGameLine">${data.game||''} — ${data.size||''} لاعب</span>`;
+    document.getElementById('tDesc').textContent = 'بطولة خاصة، منظَّمة ومُشرَف عليها رسمياً من فريق ArenoX.';
+
+    if (!data.rounds || !data.rounds.length) {
+      display.innerHTML = `
+        <div style="text-align:center;padding:52px 20px;width:100%">
+          <div style="font-size:4rem;margin-bottom:18px">🏟️</div>
+          <h3 style="color:var(--muted);font-weight:700">لا توجد مباريات بعد</h3>
+        </div>`;
+      return;
+    }
+
+    renderRounds(data.rounds, display);
+  } catch (e) {
+    display.innerHTML = `<p style="text-align:center;color:var(--red);padding:36px;width:100%"><i class="fas fa-exclamation-triangle"></i> تعذّر جلب الشجرة، حاول لاحقاً.</p>`;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadCustomBracket);
+</script>
+</body>
+</html>

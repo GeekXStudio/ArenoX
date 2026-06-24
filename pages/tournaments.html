@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>البطولة الرسمية 64 لاعب — ArenoX</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../image/ArenoX-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="img-background"><img src="../image/stadium-glow.jpg" alt="ArenoX"></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../image/ArenoX-logo.png" class="logo-img" alt="ArenoX" onerror="this.style.display='none'">
+      <span class="logo-text">ArenoX</span>
+    </a>
+    <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links">
+      <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="tournaments.html" class="active"><i class="fas fa-trophy"></i> البطولة المجانية</a>
+      <a href="paid-tournaments.html"><i class="fas fa-crown"></i> البطولات المدفوعة</a>
+      <a href="custom-tournament.html"><i class="fas fa-plus"></i> أنشئ بطولتك</a>
+      <a href="montage.html"><i class="fas fa-film"></i> مونتاج</a>
+      <a href="poster.html"><i class="fas fa-palette"></i> بوسترات</a>
+      <a href="certificates.html"><i class="fas fa-certificate"></i> شهادات</a>
+      <a href="accounts.html"><i class="fas fa-shield-alt"></i> الحسابات</a>
+      <a href="payment.html" class="nav-cta"><i class="fas fa-star"></i> الخدمات</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge"><i class="fas fa-trophy"></i> البطولة الرسمية — ArenoX</div>
+  <h1>بطولة ArenoX<br><span class="line2 grad-purple">64 لاعب — مجاناً</span></h1>
+  <p>سجّل مجاناً وتنافس في بطولة نظيفة 100% — قرعة عشوائية عادلة وإشراف رسمي من الفريق.</p>
+  <div class="hero-btns">
+    <a href="#regForm" class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> سجّل الآن مجاناً</a>
+    <a href="#dashboard" class="btn btn-outline btn-lg"><i class="fas fa-sitemap"></i> شجرة المباريات</a>
+  </div>
+</section>
+
+<!-- عداد -->
+<div style="text-align:center;padding:0 20px 8px">
+  <div class="counter-box" id="counterBox">
+    <span style="color:var(--violet)">●</span> جاري التحميل...
+  </div>
+</div>
+
+<!-- ══ نموذج التسجيل ══ -->
+<section class="section" id="regForm">
+  <div class="container-xs">
+    <div class="section-title">
+      <h2>📋  التسجيل</h2>
+      <p>التسجيل مجاني — لا رسوم ولا رهانات</p>
+    </div>
+
+    <div id="regFormArea">
+      <div class="form-card">
+        <div class="form-sec-title"><i class="fas fa-user"></i> بياناتك</div>
+
+        <div class="form-group">
+          <label>الاسم الكامل <span class="req">*</span></label>
+          <input type="text" id="rFullName" placeholder="اسمك الثلاثي" required>
+        </div>
+
+        <div class="form-group">
+          <label>اسم المستخدم في اللعبة <span class="req">*</span></label>
+          <input type="text" id="rUserName" placeholder="اسمك داخل اللعبة" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>منصة التواصل <span class="req">*</span></label>
+            <select id="rPlatform" required>
+              <option value="">اختر...</option>
+              <option>فيسبوك</option>
+              <option>إنستغرام</option>
+              <option>تيليجرام</option>
+              <option>تيكتوك</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>اللعبة <span class="req">*</span></label>
+            <select id="rGame" required>
+              <option value="">اختر...</option>
+              <option>eFootball (PES)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-sec-title"><i class="fab fa-telegram"></i> معلومات التواصل</div>
+
+        <div class="form-group">
+          <label style="color:var(--cyan)"><i class="fab fa-telegram"></i> معرّف تيليجرام (Username) <span class="req">*</span></label>
+          <input type="text" id="rTelegram" placeholder="مثال: Fahd_Bassam" required>
+          <small>لتنسيق مواعيد مبارياتك مع خصمك والمنظمين</small>
+        </div>
+
+        <div class="form-group">
+          <label style="color:var(--cyan)"><i class="fas fa-envelope"></i> البريد الإلكتروني <span class="req">*</span></label>
+          <input type="email" id="rEmail" placeholder="example@gmail.com" required>
+          <small>لاستقبال جدول مبارياتك وتحديثات القرعة فوراً</small>
+        </div>
+
+        <div class="alert alert-success">
+          <i class="fas fa-shield-alt" style="flex-shrink:0;font-size:1.15rem"></i>
+          <div><strong>التسجيل مجاني 100%</strong> — لا رسوم ولا رهانات. تنافس نظيف بشرف وروح رياضية عالية.</div>
+        </div>
+
+        <button class="btn btn-primary btn-full btn-lg" id="regBtn" onclick="submitReg()">
+          <i class="fas fa-paper-plane"></i> إرسال الطلب والانضمام للبطولة
+        </button>
+      </div>
+      <div id="notifBox" style="margin-top:12px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ لوحة المعلومات ══ -->
+<section class="section section-dark" id="dashboard">
+  <div class="container">
+    <div class="dashboard">
+      <h2 class="dashboard-title">
+        <i class="fas fa-chart-bar"></i> مركز معلومات
+        <span class="grad-purple">ArenoX</span> الحية
+      </h2>
+
+      <div class="tabs-bar">
+        <button id="btn-tab-bracket"  class="tab-btn active" onclick="switchTab('tab-bracket', null, 'T64')">
+          <i class="fas fa-sitemap"></i> شجرة المباريات
+        </button>
+      <a href="to.html" id="btn-tab-rankings" class="tab-btn">
+  <i class="fas fa-trophy"></i> التصنيف العام
+</a>
+      </div>
+
+      <!-- شجرة المباريات -->
+      <div id="tab-bracket" class="tab-pane active">
+        <div class="bracket-wrap" id="bracketDisplay">
+          <div style="text-align:center;padding:44px;width:100%">
+            <span class="spinner" style="width:36px;height:36px;border-width:3.5px"></span>
+            <p style="margin-top:16px;color:var(--muted);font-size:var(--fs-base)">جاري تحميل الشجرة...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h4>تابع مجتمع ArenoX الرسمي</h4>
+  <div class="social-row">
+    <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@arenox7" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/are.nox" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://t.me/arenox7" class="social-btn" target="_blank"><i class="fab fa-telegram"></i></a>
+    <a href="https://www.youtube.com/@Aren.0X" class="social-btn" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p class="powered">Powered by GeekX Engine</p>
+</footer>
+
+<script src="../js/core.js"></script>
+<script>
+async function submitReg() {
+  const vals = {
+    fullName:         document.getElementById('rFullName').value.trim(),
+    userName:         document.getElementById('rUserName').value.trim(),
+    platform:         document.getElementById('rPlatform').value,
+    game:             document.getElementById('rGame').value,
+    telegramUserName: document.getElementById('rTelegram').value.trim(),
+    email:            document.getElementById('rEmail').value.trim(),
+  };
+
+  if (!vals.fullName || !vals.userName || !vals.platform || !vals.game || !vals.telegramUserName || !vals.email) {
+    toast('يرجى تعبئة جميع الحقول المطلوبة','warning'); return;
+  }
+
+  const btn = document.getElementById('regBtn');
+  setLoading(btn, true);
+  const result = await registerPlayer({ action:'register', ...vals, tournamentType:'T64', tournamentName:'بطولة الأبطال (64 لاعب)', tournamentSize:64 });
+  setLoading(btn, false);
+
+  if (result.success) {
+    document.getElementById('regFormArea').innerHTML = `
+      <div class="success-state">
+        <div class="success-icon">✅</div>
+        <h3>تم تسجيلك بنجاح!</h3>
+        <p>ستصلك تفاصيل القرعة ومواعيد مبارياتك عبر بريدك الإلكتروني وتيليجرام.</p>
+        <div class="order-id-tag">لاعب #${_count}</div>
+        <div class="flex mt-24" style="justify-content:center;gap:12px;flex-wrap:wrap">
+          <a href="#dashboard" class="btn btn-primary"><i class="fas fa-sitemap"></i> شاهد الشجرة</a>
+          <a href="${ARENOX.TELEGRAM}" target="_blank" class="btn btn-outline"><i class="fab fa-telegram"></i> تيليجرام</a>
+        </div>
+      </div>`;
+    updateCounter('counterBox');
+  } else {
+    showNotif(result.message || 'حدث خطأ، حاول مجدداً.','error');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadCount(() => updateCounter('counterBox'));
+  loadBracket('bracketDisplay', 'bracketFilter', 'T64'); // البطولة الرسمية المجانية فقط — منفصلة عن البطولات المدفوعة
+});
+</script>
+</body>
+</html>
