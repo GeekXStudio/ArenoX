@@ -1,6 +1,6 @@
 /**
  * ArenoX V2 — core.js الموحّد
- * بطولة 64 لاعب + نظام بطولة مخصصة مدفوعة
+ * بطولة 128 لاعب + نظام بطولة مخصصة مدفوعة
  */
 
 // ── CONFIG ──────────────────────────────────────────
@@ -138,7 +138,7 @@ function updateCounter(elId = 'counterBox') {
   if (!el) return;
   const rem = ARENOX.MAX_PLAYERS - _count;
   if (rem <= 0) {
-    el.innerHTML = `<span style="color:var(--red);font-size:1.1rem">●</span> اكتملت بطولة الـ 64 — ترقّب الجولة القادمة!`;
+    el.innerHTML = `<span style="color:var(--red);font-size:1.1rem">●</span> اكتملت بطولة الـ ${ARENOX.MAX_PLAYERS} — ترقّب الجولة القادمة!`;
   } else {
     el.innerHTML = `
       <span style="color:var(--green);font-size:1.1rem">●</span>
