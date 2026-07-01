@@ -7,7 +7,7 @@
 const ARENOX = {
   SCRIPT_URL:      'https://script.google.com/macros/s/AKfycby69DIPSN2VRDD5gEPYK8dpD7Zm9isM2jnUKDOaHkQ1s3qqCjM_R53Tntzp36CU5FdG/exec',
   SERVICES_URL:    'https://script.google.com/macros/s/AKfycby69DIPSN2VRDD5gEPYK8dpD7Zm9isM2jnUKDOaHkQ1s3qqCjM_R53Tntzp36CU5FdG/exec',
-  MAX_PLAYERS:     64,
+  MAX_PLAYERS:     128,
   ASIA_NUM:        '07XX-XXX-XXXX',
   ZAIN_NUM:        '07XX-XXX-XXXX',
   WHATSAPP:        '9647XXXXXXXXX',
